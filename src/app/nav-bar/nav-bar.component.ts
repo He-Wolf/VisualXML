@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { OpenModalComponent } from "../open-modal/open-modal.component";
+import { CloseModalComponent } from "../close-modal/close-modal.component";
+import { SaveasModalComponent } from "../saveas-modal/saveas-modal.component";
 
 @Component({
   selector: 'app-nav-bar',
@@ -17,9 +19,14 @@ export class NavBarComponent implements OnInit {
   }
 
   openModal() {
-    //Here you define the name of your component
     this.activeModal.open(OpenModalComponent);
-    //This section is if you want to have any variable to initialize
-    //compConst.componentInstance.weight = undefined;
-}
+  }
+
+  saveasModal() {
+    this.activeModal.open(SaveasModalComponent);
+  }
+
+  closeModal() {
+    this.activeModal.open(CloseModalComponent);
+  }
 }

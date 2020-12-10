@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { OpenModalComponent } from './open-modal/open-modal.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavBarComponent
+    NavBarComponent,
+    OpenModalComponent
   ],
   imports: [
     BrowserModule,
@@ -17,6 +19,9 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
     NgbModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    OpenModalComponent,
+],
 })
 export class AppModule { }

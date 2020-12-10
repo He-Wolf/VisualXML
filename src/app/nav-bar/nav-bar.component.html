@@ -12,7 +12,7 @@
             <li ngbDropdown class="nav-item">
                 <a ngbDropdownToggle class="nav-link" id="VisualXmlDropdown">File</a>
                 <div ngbDropdownMenu aria-labelledby="VisualXmlDropdown">
-                    <a ngbDropdownItem [routerLink]="'.'" (click)="isMenuCollapsed = true">Open</a>
+                    <a ngbDropdownItem [routerLink]="'.'" (click)="openModal(); isMenuCollapsed = true">Open</a>
                     <a ngbDropdownItem [routerLink]="'.'" (click)="isMenuCollapsed = true">Save As</a>
                     <a ngbDropdownItem [routerLink]="'.'" (click)="isMenuCollapsed = true">Close</a>
                 </div>

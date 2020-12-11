@@ -26,6 +26,8 @@ import { CloseModalComponent } from './close-modal/close-modal.component';
   bootstrap: [AppComponent],
   entryComponents: [
     OpenModalComponent,
+    CloseModalComponent,
+    SaveasModalComponent,
 ],
 })
 export class AppModule { }

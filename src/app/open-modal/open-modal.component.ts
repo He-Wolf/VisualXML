@@ -9,10 +9,24 @@ import bsCustomFileInput from 'bs-custom-file-input';
 })
 export class OpenModalComponent implements OnInit {
 
+  fileToParse: File = null;
+
   constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit(): void {
     bsCustomFileInput.init()
   }
 
+  handleFileInput(files: FileList){
+    this.fileToParse = files.item(0);
+  }
+
+  parseXML(){
+    const reader = new FileReader();
+    reader.onload = (evt) => {
+        const xmlData: string = (evt as any).target.result;
+        console.log(xmlData);
+    };
+    reader.readAsText(this.fileToParse);
+  }
 }

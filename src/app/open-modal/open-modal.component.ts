@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import bsCustomFileInput from 'bs-custom-file-input';
+import * as xml2js from "xml2js";
 
 @Component({
   selector: 'app-open-modal',
@@ -25,8 +26,12 @@ export class OpenModalComponent implements OnInit {
     const reader = new FileReader();
     reader.onload = (evt) => {
         const xmlData: string = (evt as any).target.result;
-        console.log(xmlData);
+        xml2js.parseString(xmlData, function (err, result) {
+          console.log(result);
+        });
+        // console.log(xmlData);
     };
     reader.readAsText(this.fileToParse);
+    this.activeModal.close();
   }
 }

@@ -20,13 +20,16 @@ export class NavBarComponent implements OnInit {
 
   openModal() {
     this.activeModal.open(OpenModalComponent);
+    this.isMenuCollapsed = true;
   }
 
   saveasModal() {
     this.activeModal.open(SaveasModalComponent);
+    this.isMenuCollapsed = true;
   }
 
   closeModal() {
     this.activeModal.open(CloseModalComponent);
+    this.isMenuCollapsed = true;
   }
 }

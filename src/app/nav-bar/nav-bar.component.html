@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
-    <a class="navbar-brand" [routerLink]="'.'">VisualXML</a>
+    <a class="navbar-brand" [routerLink]="['/home']" routerLinkActive="active">VisualXML</a>
   
     
     <button class="navbar-toggler" type="button" (click)="isMenuCollapsed = !isMenuCollapsed">
@@ -12,18 +12,18 @@
             <li ngbDropdown class="nav-item">
                 <a ngbDropdownToggle class="nav-link" id="VisualXmlDropdown">File</a>
                 <div ngbDropdownMenu aria-labelledby="VisualXmlDropdown">
-                    <a ngbDropdownItem [routerLink]="'.'" (click)="openModal(); isMenuCollapsed = true">Open</a>
-                    <a ngbDropdownItem [routerLink]="'.'" (click)="saveasModal(); isMenuCollapsed = true">Save As</a>
-                    <a ngbDropdownItem [routerLink]="'.'" (click)="closeModal(); isMenuCollapsed = true">Close</a>
+                    <a ngbDropdownItem (click)="openModal();">Open</a>
+                    <a ngbDropdownItem (click)="saveasModal();">Save As</a>
+                    <a ngbDropdownItem (click)="closeModal();">Close</a>
                 </div>
             </li>
         </ul>
         <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = true">Help</a>
+          <a class="nav-link" (click)="isMenuCollapsed = true">Help</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="'.'" (click)="isMenuCollapsed = true">About</a>
+          <a class="nav-link" (click)="isMenuCollapsed = true">About</a>
         </li>
       </ul>
     </div>

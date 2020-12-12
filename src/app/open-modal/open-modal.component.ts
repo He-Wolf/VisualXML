@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import bsCustomFileInput from 'bs-custom-file-input';
 import { XmlProcessorService } from "../services/xml-processor.service";
@@ -13,6 +14,7 @@ export class OpenModalComponent implements OnInit {
   fileToParse: File = null;
 
   constructor(
+    public router: Router,
     public activeModal: NgbActiveModal,
     public xmlProcessor: XmlProcessorService,
     ) { }
@@ -29,5 +31,6 @@ export class OpenModalComponent implements OnInit {
     this.xmlProcessor.xmlDom = await this.xmlProcessor.parseXML(this.fileToParse);
     console.log(this.xmlProcessor.xmlDom)
     this.activeModal.close();
+    this.router.navigate(['viewer']);
   }
 }

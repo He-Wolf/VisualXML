@@ -25,8 +25,9 @@ export class OpenModalComponent implements OnInit {
     this.fileToParse = files.item(0);
   }
   
-  parseXML(){
-    this.xmlProcessor.parseXML(this.fileToParse);
+  async parseXML(){
+    this.xmlProcessor.xmlDom = await this.xmlProcessor.parseXML(this.fileToParse);
+    console.log(this.xmlProcessor.xmlDom)
     this.activeModal.close();
   }
 }

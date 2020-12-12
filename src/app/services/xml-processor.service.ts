@@ -13,14 +13,16 @@ export class XmlProcessorService {
 
   parseXML(fileToParse: File){
     const reader = new FileReader();
+
+    return new Promise((resolve, reject)=>{
+      
     reader.onload = (evt) => {
-        const xmlData: string = (evt as any).target.result;
-        xml2js.parseString(xmlData, function (err, result) {
-          // this.xmlDom = result;
-          // console.log(this.xmlDom);
-          console.log(result);
-        });
+      const xmlData: string = (evt as any).target.result;
+      xml2js.parseString(xmlData, function (err, result) {
+        resolve(result);
+      });
     };
     reader.readAsText(fileToParse);
+    });
   }
 }

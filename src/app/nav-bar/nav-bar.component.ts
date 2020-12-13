@@ -3,6 +3,7 @@ import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { OpenModalComponent } from "../open-modal/open-modal.component";
 import { CloseModalComponent } from "../close-modal/close-modal.component";
 import { SaveasModalComponent } from "../saveas-modal/saveas-modal.component";
+import { FileStateService } from "../services/file-state.service";
 
 @Component({
   selector: 'app-nav-bar',
@@ -13,7 +14,10 @@ export class NavBarComponent implements OnInit {
 
   public isMenuCollapsed = true;
 
-  constructor(public activeModal: NgbModal) { }
+  constructor(
+    public activeModal: NgbModal,
+    public fileStateService: FileStateService,
+    ) { }
 
   ngOnInit(): void {
   }

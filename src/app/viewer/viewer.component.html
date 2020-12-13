@@ -1,1 +1,2 @@
-<p>This is the viewer.</p>
+<div *ngIf="xmlProcessor.xmlDom; else elseBlock">XMLdom is ready</div>
+<ng-template #elseBlock>XMLdom is loading...</ng-template>

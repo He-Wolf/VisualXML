@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { XmlProcessorService } from "../services/xml-processor.service";
 
 @Component({
   selector: 'app-viewer',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewerComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public xmlProcessor: XmlProcessorService
+  ) { }
 
   ngOnInit(): void {
   }

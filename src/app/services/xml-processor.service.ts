@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import * as xml2js from "xml2js";
 
 @Injectable({

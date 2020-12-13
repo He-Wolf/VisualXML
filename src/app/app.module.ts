@@ -8,6 +8,8 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { OpenModalComponent } from './open-modal/open-modal.component';
 import { SaveasModalComponent } from './saveas-modal/saveas-modal.component';
 import { CloseModalComponent } from './close-modal/close-modal.component';
+import { HomeComponent } from './home/home.component';
+import { ViewerComponent } from './viewer/viewer.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { CloseModalComponent } from './close-modal/close-modal.component';
     NavBarComponent,
     OpenModalComponent,
     SaveasModalComponent,
-    CloseModalComponent
+    CloseModalComponent,
+    HomeComponent,
+    ViewerComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +30,8 @@ import { CloseModalComponent } from './close-modal/close-modal.component';
   bootstrap: [AppComponent],
   entryComponents: [
     OpenModalComponent,
+    CloseModalComponent,
+    SaveasModalComponent,
 ],
 })
 export class AppModule { }

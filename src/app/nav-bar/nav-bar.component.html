@@ -13,8 +13,8 @@
                 <a ngbDropdownToggle class="nav-link" id="VisualXmlDropdown">File</a>
                 <div ngbDropdownMenu aria-labelledby="VisualXmlDropdown">
                     <a ngbDropdownItem (click)="openModal();">Open</a>
-                    <a ngbDropdownItem [ngClass]="{'disabled': !fileStateService.isOpened}" (click)="saveasModal();">Save As</a>
-                    <a ngbDropdownItem [ngClass]="{'disabled': !fileStateService.isOpened}" (click)="closeModal();">Close</a>
+                    <a ngbDropdownItem [disabled]='!fileStateService.isOpened' (click)="saveasModal();">Save As</a>
+                    <a ngbDropdownItem [disabled]='!fileStateService.isOpened' (click)="closeModal();">Close</a>
                 </div>
             </li>
         </ul>

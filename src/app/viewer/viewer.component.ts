@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { XmlProcessorService } from "../services/xml-processor.service";
+import { FileStateService } from "../services/file-state.service";
 
 @Component({
   selector: 'app-viewer',
@@ -9,7 +10,8 @@ import { XmlProcessorService } from "../services/xml-processor.service";
 export class ViewerComponent implements OnInit {
 
   constructor(
-    public xmlProcessor: XmlProcessorService
+    public xmlProcessor: XmlProcessorService,
+    public fileStateService: FileStateService,
   ) { }
 
   ngOnInit(): void {

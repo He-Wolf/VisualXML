@@ -22,7 +22,7 @@ export class OpenModalComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    bsCustomFileInput.init()
+    bsCustomFileInput.init();
   }
 
   handleFileInput(files: FileList){

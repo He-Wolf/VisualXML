@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { XmlProcessorService } from "../services/xml-processor.service";
 
 @Component({
   selector: 'app-saveas-modal',
@@ -8,9 +9,17 @@ import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 })
 export class SaveasModalComponent implements OnInit {
 
-  constructor(public activeModal: NgbActiveModal) { }
+  constructor(
+    public activeModal: NgbActiveModal,
+    public xmlProcessor: XmlProcessorService,
+    ) { }
 
   ngOnInit(): void {
+  }
+
+  saveasXML(){
+    this.xmlProcessor.saveasXML();
+    this.activeModal.close();
   }
 
 }

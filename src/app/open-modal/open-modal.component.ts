@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 import bsCustomFileInput from 'bs-custom-file-input';
 import { XmlProcessorService } from "../services/xml-processor.service";
+import { FileStateService } from "../services/file-state.service";
 
 @Component({
   selector: 'app-open-modal',
@@ -17,10 +18,11 @@ export class OpenModalComponent implements OnInit {
     public router: Router,
     public activeModal: NgbActiveModal,
     public xmlProcessor: XmlProcessorService,
+    public fileStateService: FileStateService,
     ) { }
 
   ngOnInit(): void {
-    bsCustomFileInput.init()
+    bsCustomFileInput.init();
   }
 
   handleFileInput(files: FileList){
@@ -30,6 +32,7 @@ export class OpenModalComponent implements OnInit {
   async parseXML(){
     this.xmlProcessor.xmlDom = await this.xmlProcessor.parseXML(this.fileToParse);
     console.log(this.xmlProcessor.xmlDom)
+    this.fileStateService.isOpened = true;
     this.activeModal.close();
     this.router.navigate(['viewer']);
   }

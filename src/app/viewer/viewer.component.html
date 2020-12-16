@@ -1,5 +1,7 @@
 <div *ngIf="fileStateService.isOpened; else elseBlock">
-    <div *ngIf="xmlProcessor.xmlDom; else elseBlock">XMLdom is ready</div>
+    <div *ngIf="xmlProcessor.xmlDom; else elseBlock">
+        <app-tree-view></app-tree-view>
+    </div>
     <ng-template #elseBlock>XMLdom is loading...</ng-template>
 </div>
 <ng-template #elseBlock>No XML document has been opened</ng-template>

@@ -10,6 +10,7 @@ import { SaveasModalComponent } from './saveas-modal/saveas-modal.component';
 import { CloseModalComponent } from './close-modal/close-modal.component';
 import { HomeComponent } from './home/home.component';
 import { ViewerComponent } from './viewer/viewer.component';
+import { TreeViewComponent } from './tree-view/tree-view.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ViewerComponent } from './viewer/viewer.component';
     SaveasModalComponent,
     CloseModalComponent,
     HomeComponent,
-    ViewerComponent
+    ViewerComponent,
+    TreeViewComponent
   ],
   imports: [
     BrowserModule,

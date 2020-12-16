@@ -18,7 +18,20 @@ export class XmlProcessorService {
       
     reader.onload = (evt) => {
       const xmlData: string = (evt as any).target.result;
-      xml2js.parseString(xmlData, function (err, result) {
+      xml2js.parseString(
+        xmlData,
+        {
+          //tagNameProcessors: [(name)=>{console.log(name); return name;}],
+          attrkey: "#attribute",
+          charkey: "#text",
+          //explicitCharkey: true,
+          explicitRoot: false,
+          explicitChildren: true,
+          childkey: "#children",
+          preserveChildrenOrder: true,
+          //charsAsChildren: true,
+        },
+        function (err, result) {
         resolve(result);
       });
     };

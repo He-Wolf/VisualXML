@@ -31,6 +31,7 @@ export class OpenModalComponent implements OnInit {
   
   async parseXML(){
     this.xmlProcessor.xmlDom = await this.xmlProcessor.parseXML(this.fileToParse);
+    this.xmlProcessor.xmlDom = this.xmlProcessor.nameConverter(this.xmlProcessor.xmlDom)
     // console.log(this.xmlProcessor.xmlDom);
     console.log(JSON.stringify(this.xmlProcessor.xmlDom, null, 4));
     this.fileStateService.isOpened = true;

@@ -19,7 +19,7 @@ export class XmlProcessorService {
     reader.onload = (evt) => {
       const xmlData: string = (evt as any).target.result;
       xml2js.parseString(
-        xmlData,/* {
+        xmlData, {
           // tagNameProcessors: [(name)=>{console.log(name); return name;}],
           attrkey: "attribute",
           charkey: "text",
@@ -28,11 +28,11 @@ export class XmlProcessorService {
           // xmlns: true,
           explicitChildren: true,
           childkey: "children",
-          //preserveChildrenOrder: true,
+          preserveChildrenOrder: true,
           // charsAsChildren: true,
-        },*/
+        },
         function (err, result) {
-        resolve(result);
+          resolve(result);
       });
     };
     reader.readAsText(fileToParse);
@@ -48,5 +48,13 @@ export class XmlProcessorService {
 
     const blob = new Blob([xml], {type: "text/plain;charset=utf-8"});
     saveAs(blob, "default.xml");
+  }
+
+  nameConverter(jsonObj: Object){
+    var jsonText: string = JSON.stringify(jsonObj, null, 4);
+    const regex = /"#name":/gm;
+    const subst = `"name":`;
+    const result = jsonText.replace(regex, subst);
+    return JSON.parse(result);
   }
 }

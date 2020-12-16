@@ -1,0 +1,68 @@
+{
+    "ibm:dept": {
+        "$": {
+            "bldg": "123",
+            "xmlns:ibm": "http://www.ibm.com/xmltable"
+        },
+        "ibm:employee": [
+            {
+                "$": {
+                    "id": "144"
+                },
+                "ibm:name": [
+                    {
+                        "ibm:first": [
+                            "James"
+                        ],
+                        "ibm:last": [
+                            "Bond"
+                        ]
+                    }
+                ],
+                "ibm:office": [
+                    "007"
+                ],
+                "ibm:phone": [
+                    "905-007-1007"
+                ],
+                "ibm:salary": [
+                    {
+                        "_": "77007",
+                        "$": {
+                            "currency": "USD"
+                        }
+                    }
+                ]
+            },
+            {
+                "$": {
+                    "id": "172"
+                },
+                "ibm:name": [
+                    {
+                        "ibm:first": [
+                            "Luke"
+                        ],
+                        "ibm:last": [
+                            "Skywalker"
+                        ]
+                    }
+                ],
+                "ibm:office": [
+                    "Jedi"
+                ],
+                "ibm:phone": [
+                    "111-222-3333"
+                ],
+                "ibm:salary": [
+                    {
+                        "_": "25410200",
+                        "$": {
+                            "currency": "HUF"
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+}

@@ -1,4 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { ArrayDataSource } from '@angular/cdk/collections';
+import { NestedTreeControl } from '@angular/cdk/tree';
+import { XmlProcessorService } from "../services/xml-processor.service";
+
+interface XmlNode {
+  name: string;
+  children?: XmlNode[];
+}
 
 @Component({
   selector: 'app-tree-view',
@@ -7,9 +15,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TreeViewComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public xmlProcessor: XmlProcessorService
+    ) { }
+  
+  treeControl = new NestedTreeControl<XmlNode> (node => node.children);
+  dataSource = new ArrayDataSource([this.xmlProcessor.xmlDom]);
+
+  hasChild = (_: number, node: XmlNode) => !!node.children && node.children.length > 0;
 
   ngOnInit(): void {
+    console.log(typeof this.xmlProcessor.xmlDom)
+    console.log(this.xmlProcessor.xmlDom as XmlNode)
   }
 
 }

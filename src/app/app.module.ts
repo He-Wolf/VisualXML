@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CdkTreeModule } from '@angular/cdk/tree';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -26,7 +27,8 @@ import { TreeViewComponent } from './tree-view/tree-view.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    CdkTreeModule
   ],
   providers: [],
   bootstrap: [AppComponent],

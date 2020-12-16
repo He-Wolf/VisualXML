@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
-import * as xml2js from "xml2js";
+import * as xmlParser from "fast-xml-parser";
 import { saveAs } from 'file-saver';
+import { j2xParser } from 'fast-xml-parser';
+import * as he from 'he';
+
 
 @Injectable({
   providedIn: 'root'
@@ -18,43 +21,50 @@ export class XmlProcessorService {
       
     reader.onload = (evt) => {
       const xmlData: string = (evt as any).target.result;
-      xml2js.parseString(
-        xmlData, {
-          // tagNameProcessors: [(name)=>{console.log(name); return name;}],
-          attrkey: "attribute",
-          charkey: "text",
-          // explicitCharkey: true,
-          explicitRoot: false,
-          // xmlns: true,
-          explicitChildren: true,
-          childkey: "children",
-          preserveChildrenOrder: true,
-          // charsAsChildren: true,
-        },
-        function (err, result) {
-          resolve(result);
-      });
+
+      var options = {
+        attributeNamePrefix : "@_",
+        attrNodeName: "attr", //default is 'false'
+        textNodeName : "#text",
+        ignoreAttributes : false,
+        ignoreNameSpace : true,
+        allowBooleanAttributes : false,
+        parseNodeValue : true,
+        parseAttributeValue : false,
+        trimValues: true,
+        cdataTagName: "__cdata", //default is 'false'
+        cdataPositionChar: "\\c",
+        parseTrueNumberOnly: false,
+        arrayMode: true, //"strict"
+        attrValueProcessor: (val, attrName) => he.decode(val, {isAttributeValue: true}),//default is a=>a
+        tagValueProcessor : (val, tagName) => he.decode(val), //default is a=>a
+        stopNodes: ["parse-me-as-string"]
+      };
+      resolve(xmlParser.parse(xmlData, options));
     };
     reader.readAsText(fileToParse);
     });
   }
 
   saveasXML(){
-    var builder = new xml2js.Builder({
-      attrkey: "#attribute",
-      charkey: "#text",
-    });
-    var xml = builder.buildObject(this.xmlDom);
+    //default options need not to set
+    var defaultOptions = {
+        attributeNamePrefix : "@_",
+        attrNodeName: "@", //default is false
+        textNodeName : "#text",
+        ignoreAttributes : true,
+        cdataTagName: "__cdata", //default is false
+        cdataPositionChar: "\\c",
+        format: false,
+        indentBy: "  ",
+        supressEmptyNode: false,
+        tagValueProcessor: a=> he.encode(a, {useNamedReferences: true}),// default is a=>a
+        attrValueProcessor: a=> he.encode(a, {isAttributeValue: true, useNamedReferences: true})// default is a=>a
+    };
+    var parser = new j2xParser(defaultOptions);
+    var xml = parser.parse(this.xmlDom);
 
     const blob = new Blob([xml], {type: "text/plain;charset=utf-8"});
     saveAs(blob, "default.xml");
-  }
-
-  nameConverter(){
-    var jsonText: string = JSON.stringify(this.xmlDom, null, 4);
-    const regex = /"#name":/gm;
-    const subst = `"name":`;
-    const result = jsonText.replace(regex, subst);
-    this.xmlDom = JSON.parse(result);
   }
 }

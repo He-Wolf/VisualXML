@@ -25,8 +25,6 @@ export class TreeViewComponent implements OnInit {
   hasChild = (_: number, node: XmlNode) => !!node.children && node.children.length > 0;
 
   ngOnInit(): void {
-    console.log(typeof this.xmlProcessor.xmlDom)
-    console.log(this.xmlProcessor.xmlDom as XmlNode)
   }
 
 }

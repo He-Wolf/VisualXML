@@ -50,11 +50,11 @@ export class XmlProcessorService {
     saveAs(blob, "default.xml");
   }
 
-  nameConverter(jsonObj: Object){
-    var jsonText: string = JSON.stringify(jsonObj, null, 4);
+  nameConverter(){
+    var jsonText: string = JSON.stringify(this.xmlDom, null, 4);
     const regex = /"#name":/gm;
     const subst = `"name":`;
     const result = jsonText.replace(regex, subst);
-    return JSON.parse(result);
+    this.xmlDom = JSON.parse(result);
   }
 }

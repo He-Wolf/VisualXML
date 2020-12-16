@@ -20,17 +20,18 @@ export class XmlProcessorService {
       const xmlData: string = (evt as any).target.result;
       xml2js.parseString(
         xmlData,
-        {
-          //tagNameProcessors: [(name)=>{console.log(name); return name;}],
-          attrkey: "#attribute",
-          charkey: "#text",
-          //explicitCharkey: true,
+        /*{
+          // tagNameProcessors: [(name)=>{console.log(name); return name;}],
+          attrkey: "attribute",
+          charkey: "text",
+          // explicitCharkey: true,
           explicitRoot: false,
+          // xmlns: true,
           explicitChildren: true,
-          childkey: "#children",
-          preserveChildrenOrder: true,
-          //charsAsChildren: true,
-        },
+          childkey: "children",
+          //preserveChildrenOrder: true,
+          // charsAsChildren: true,
+        },*/
         function (err, result) {
         resolve(result);
       });
@@ -40,7 +41,10 @@ export class XmlProcessorService {
   }
 
   saveasXML(){
-    var builder = new xml2js.Builder();
+    var builder = new xml2js.Builder({
+      attrkey: "#attribute",
+      charkey: "#text",
+    });
     var xml = builder.buildObject(this.xmlDom);
 
     const blob = new Blob([xml], {type: "text/plain;charset=utf-8"});

@@ -14,7 +14,8 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "allowedCommonJsDependencies": [
-               "xml2js"
+               "xml2js",
+               "file-saver"
             ],
             "outputPath": "dist/VisualXML",
             "index": "src/index.html",

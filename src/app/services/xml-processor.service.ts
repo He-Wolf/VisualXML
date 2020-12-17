@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as xml2js from "xml2js";
+import { DOMParser } from "xmldom";
 import { saveAs } from 'file-saver';
 
 @Injectable({
@@ -18,22 +19,8 @@ export class XmlProcessorService {
       
     reader.onload = (evt) => {
       const xmlData: string = (evt as any).target.result;
-      xml2js.parseString(
-        xmlData, {
-          // tagNameProcessors: [(name)=>{console.log(name); return name;}],
-          attrkey: "attribute",
-          charkey: "text",
-          // explicitCharkey: true,
-          explicitRoot: false,
-          // xmlns: true,
-          explicitChildren: true,
-          childkey: "children",
-          preserveChildrenOrder: true,
-          // charsAsChildren: true,
-        },
-        function (err, result) {
-          resolve(result);
-      });
+      const xmlDom = new DOMParser().parseFromString(xmlData);
+      resolve(xmlDom);
     };
     reader.readAsText(fileToParse);
     });
@@ -48,13 +35,5 @@ export class XmlProcessorService {
 
     const blob = new Blob([xml], {type: "text/plain;charset=utf-8"});
     saveAs(blob, "default.xml");
-  }
-
-  nameConverter(){
-    var jsonText: string = JSON.stringify(this.xmlDom, null, 4);
-    const regex = /"#name":/gm;
-    const subst = `"name":`;
-    const result = jsonText.replace(regex, subst);
-    this.xmlDom = JSON.parse(result);
   }
 }

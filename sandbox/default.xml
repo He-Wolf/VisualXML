@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ibm:dept bldg="123" xmlns:ibm="http://www.ibm.com/xmltable">
+  <ibm:employee id="144">
+    <ibm:name>
+      <ibm:first>James</ibm:first>
+      <ibm:last>Bond</ibm:last>
+    </ibm:name>
+    <ibm:office>007</ibm:office>
+    <ibm:phone>905-007-1007</ibm:phone>
+    <ibm:salary currency="USD">77007</ibm:salary>
+  </ibm:employee>
+  <ibm:employee id="172">
+    <ibm:name>
+      <ibm:first>Luke</ibm:first>
+      <ibm:last>Skywalker</ibm:last>
+    </ibm:name>
+    <ibm:office>Jedi</ibm:office>
+    <ibm:phone>111-222-3333</ibm:phone>
+    <ibm:salary currency="HUF">25410200</ibm:salary>
+  </ibm:employee>
+</ibm:dept>

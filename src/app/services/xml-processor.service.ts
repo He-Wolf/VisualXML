@@ -24,7 +24,7 @@ export class XmlProcessorService {
           attrkey: "attribute",
           charkey: "text",
           // explicitCharkey: true,
-          explicitRoot: false,
+          // explicitRoot: false,
           // xmlns: true,
           explicitChildren: true,
           childkey: "children",
@@ -41,10 +41,10 @@ export class XmlProcessorService {
 
   saveasXML(){
     var builder = new xml2js.Builder({
-      attrkey: "#attribute",
-      charkey: "#text",
+      attrkey: "attribute",
+      charkey: "text",
     });
-    var xml = builder.buildObject(this.xmlDom);
+    var xml = builder.buildObject(removeKeys(this.xmlDom, ['name', 'children']));
 
     const blob = new Blob([xml], {type: "text/plain;charset=utf-8"});
     saveAs(blob, "default.xml");
@@ -58,3 +58,14 @@ export class XmlProcessorService {
     this.xmlDom = JSON.parse(result);
   }
 }
+
+const removeKeys = (obj, keys) => obj !== Object(obj)
+  ? obj
+  : Array.isArray(obj)
+    ? obj.map((item) => removeKeys(item, keys))
+    : Object.keys(obj)
+      .filter((k) => !keys.includes(k))
+      .reduce(
+        (acc, x) => Object.assign(acc, { [x]: removeKeys(obj[x], keys) }),
+        {}
+      )

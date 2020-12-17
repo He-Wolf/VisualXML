@@ -20,7 +20,7 @@ export class TreeViewComponent implements OnInit {
     ) { }
   
   treeControl = new NestedTreeControl<XmlNode> (node => node.children);
-  dataSource = new ArrayDataSource([this.xmlProcessor.xmlDom]);
+  dataSource = new ArrayDataSource([Object.values(this.xmlProcessor.xmlDom)[0]]);
 
   hasChild = (_: number, node: XmlNode) => !!node.children && node.children.length > 0;
 

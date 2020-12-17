@@ -6,6 +6,7 @@ import { XmlProcessorService } from "../services/xml-processor.service";
 interface XmlNode {
   nodeName?: string;
   childNodes?: XmlNodeArray;
+  hasChildNodes(): boolean;
 }
 
 interface XmlNodeArray {
@@ -26,8 +27,13 @@ export class TreeViewComponent implements OnInit {
   treeControl = new NestedTreeControl<XmlNode> (node => Object.values(node.childNodes));
   dataSource = new ArrayDataSource([this.xmlProcessor.xmlDom]);
 
-  hasChild = (_: number, node: XmlNode) => !!Object.values(node.childNodes) && Object.values(node.childNodes).length > 0;
-
+  // hasChild = (_: number, node: XmlNode) => {console.log(Object.values(node.childNodes)); return !!Object.values(node.childNodes) && Object.values(node.childNodes).length > 0};
+  // hasChild = (_: number, node: XmlNode) => {console.log(node.hasChildNodes()); return node.hasChildNodes();};
+  hasChild = (_: number, node: XmlNode) => {
+    console.log(node.hasChildNodes());
+    console.log(typeof node);
+    return node.hasChildNodes();};
+  
   ngOnInit(): void {
   }
 

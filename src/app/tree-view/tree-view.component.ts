@@ -3,15 +3,6 @@ import { ArrayDataSource } from '@angular/cdk/collections';
 import { NestedTreeControl } from '@angular/cdk/tree';
 import { XmlProcessorService } from "../services/xml-processor.service";
 
-interface XmlNode {
-  nodeName?: string;
-  childNodes?: XmlNodeArray;
-  hasChildNodes(): boolean;
-}
-
-interface XmlNodeArray {
-  [index: number]: XmlNode;
-}
 
 @Component({
   selector: 'app-tree-view',
@@ -24,17 +15,23 @@ export class TreeViewComponent implements OnInit {
     public xmlProcessor: XmlProcessorService
     ) { }
   
-  treeControl = new NestedTreeControl<XmlNode> (node => Object.values(node.childNodes));
+  treeControl = new NestedTreeControl<Node> (node => this.getChildElements(node));
   dataSource = new ArrayDataSource([this.xmlProcessor.xmlDom]);
 
-  // hasChild = (_: number, node: XmlNode) => {console.log(Object.values(node.childNodes)); return !!Object.values(node.childNodes) && Object.values(node.childNodes).length > 0};
-  // hasChild = (_: number, node: XmlNode) => {console.log(node.hasChildNodes()); return node.hasChildNodes();};
-  hasChild = (_: number, node: XmlNode) => {
-    console.log(node.hasChildNodes());
-    console.log(typeof node);
-    return node.hasChildNodes();};
+  hasChild = (_: number, node: Node) => !!this.getChildElements(node) && this.getChildElements(node).length > 0;
   
   ngOnInit(): void {
   }
 
+  getChildElements(node: Node){
+    let childElements: Node[] = [];
+    let allChildren: Node[] = Object.values(node.childNodes);
+
+    for (const child of allChildren) {
+      if(child.nodeType == 1)
+      childElements.push(child);
+    }
+
+    return childElements;
+  }
 }

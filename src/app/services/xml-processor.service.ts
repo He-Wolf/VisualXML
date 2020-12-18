@@ -25,7 +25,7 @@ export class XmlProcessorService {
       var options = {
         attributeNamePrefix : "@_",
         attrNodeName: "attr", //default is 'false'
-        textNodeName : "#text",
+        textNodeName : "text",
         ignoreAttributes : false,
         ignoreNameSpace : true,
         allowBooleanAttributes : false,
@@ -50,9 +50,9 @@ export class XmlProcessorService {
     //default options need not to set
     var defaultOptions = {
         attributeNamePrefix : "@_",
-        attrNodeName: "@", //default is false
-        textNodeName : "#text",
-        ignoreAttributes : true,
+        attrNodeName: "attr", //default is false
+        textNodeName : "text",
+        ignoreAttributes : false,
         cdataTagName: "__cdata", //default is false
         cdataPositionChar: "\\c",
         format: false,

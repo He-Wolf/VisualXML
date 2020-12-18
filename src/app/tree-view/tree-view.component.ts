@@ -4,8 +4,7 @@ import { NestedTreeControl } from '@angular/cdk/tree';
 import { XmlProcessorService } from "../services/xml-processor.service";
 
 interface XmlNode {
-  name: string;
-  children?: XmlNode[];
+  [index: string]: XmlNode[]
 }
 
 @Component({
@@ -19,10 +18,30 @@ export class TreeViewComponent implements OnInit {
     public xmlProcessor: XmlProcessorService
     ) { }
   
-  treeControl = new NestedTreeControl<XmlNode> (node => node.children);
+  treeControl = new NestedTreeControl<XmlNode> (node => {
+    const {attr, text, ...children} = node;
+    console.log('children: ',children);
+
+    let arr = []
+    for (let child in children){
+      console.log('key: ', child)
+      console.log('value: ', children[child])
+      let newElement = {}
+      newElement[child] = children[child]
+      console.log('new member: ', newElement)
+      arr.push(newElement)
+    }
+    console.log('array: ',arr);
+
+    return arr;
+  });
+
   dataSource = new ArrayDataSource([this.xmlProcessor.xmlDom]);
 
-  hasChild = (_: number, node: XmlNode) => !!node.children && node.children.length > 0;
+  hasChild = (_: number, node: XmlNode) => {
+    const {attr, text, ...children} = node;
+    console.log('haschild children: ', children);
+    return !!children;};
 
   ngOnInit(): void {
   }

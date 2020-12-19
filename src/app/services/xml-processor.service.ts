@@ -57,6 +57,18 @@ export class XmlProcessorService {
     const result = jsonText.replace(regex, subst);
     this.xmlDom = JSON.parse(result);
   }
+
+  changePropertyName = (obj: object, fromName:string, toName:string) => {
+    Object.keys(obj).forEach(key => {
+        //console.log(`key: ${key}, value: ${obj[key]}`)
+        if (typeof obj[key] === 'string' && key === fromName) {
+            obj[toName] = obj[fromName];
+            delete obj[fromName];
+        } else if (typeof obj[key] === 'object') {
+            this.changePropertyName(obj[key], fromName, toName)
+        }
+    })
+  }
 }
 
 const removeKeys = (obj, keys) => obj !== Object(obj)

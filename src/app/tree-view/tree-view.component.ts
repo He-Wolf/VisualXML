@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ArrayDataSource } from '@angular/cdk/collections';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { XmlProcessorService } from "../services/xml-processor.service";
@@ -23,9 +22,8 @@ interface FlatXmlNode {
 export class TreeViewComponent implements OnInit {
 
   constructor(
-    public xmlProcessor: XmlProcessorService,
-    ) {
-      this.dataSource.data = [Object.values(this.xmlProcessor.xmlDom)[0]];
+    public xmlProcessor: XmlProcessorService){
+      this.dataSource.data = [Object.values(<XmlNode>this.xmlProcessor.xmlDom)[0]];
     }
 
   private _transformer = (node: XmlNode, level: number) => {

@@ -37,8 +37,9 @@ export class TreeViewComponent implements OnInit {
   transformer(node: Node, level: number) {
     return {
       name: node.nodeName,
+      type: node.nodeType,
       level: level,
-      expandable: !!this.getChildElements(node) && this.getChildElements(node).length > 0
+      expandable: !!this.getChildren(node) && this.getChildren(node).length > 0,
     };
   }
 
@@ -55,13 +56,6 @@ export class TreeViewComponent implements OnInit {
   }
 
   getChildren(node: Node): Node[] | null | undefined {
-    return this.getChildElements(node);
-  }
-  
-  ngOnInit(): void {
-  }
-
-  getChildElements(node: Node){
     let childElements: Node[] = [];
     let allChildren: Node[] = Object.values(node.childNodes);
 
@@ -71,5 +65,8 @@ export class TreeViewComponent implements OnInit {
     }
 
     return childElements;
+  }
+  
+  ngOnInit(): void {
   }
 }

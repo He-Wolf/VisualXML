@@ -36,7 +36,7 @@ export class TreeViewComponent implements OnInit {
   
   transformer(node: Node, level: number) {
     return {
-      name: node.name,
+      name: node.nodeName,
       level: level,
       expandable: !!this.getChildElements(node) && this.getChildElements(node).length > 0
     };

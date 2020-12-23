@@ -15,7 +15,8 @@
           "options": {
             "allowedCommonJsDependencies": [
                "xml2js",
-               "file-saver"
+               "file-saver",
+               "xmldom"
             ],
             "outputPath": "dist/VisualXML",
             "index": "src/index.html",

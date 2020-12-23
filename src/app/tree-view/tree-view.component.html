@@ -1,20 +1,18 @@
-<cdk-tree [dataSource]="dataSource" [treeControl]="treeControl">
-    <!-- This is the tree node template for leaf nodes -->
-    <cdk-nested-tree-node *cdkTreeNodeDef="let node" class="example-tree-node">
-        <!-- use a disabled button to provide padding for tree leaf -->
-        <button mat-icon-button disabled></button>
-        {{node.nodeType == 1? node.nodeName: 'Document'}}
-    </cdk-nested-tree-node>
-    <!-- This is the tree node template for expandable nodes -->
-    <cdk-nested-tree-node *cdkTreeNodeDef="let node; when: hasChild" class="example-tree-node">
-        <button mat-icon-button [attr.aria-label]="'Toggle ' + node.nodeType == 1? node.nodeName: 'Document'" cdkTreeNodeToggle>
-            <mat-icon class="mat-icon-rtl-mirror">
-            {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-            </mat-icon>
-        </button>
-        {{node.nodeType == 1? node.nodeName: 'Document'}}
-        <div [class.example-tree-invisible]="!treeControl.isExpanded(node)">
-            <ng-container cdkTreeNodeOutlet></ng-container>
-        </div>
-    </cdk-nested-tree-node>
-</cdk-tree>
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+  <!-- This is the tree node template for leaf nodes -->
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+    <!-- use a disabled button to provide padding for tree leaf -->
+    <button mat-icon-button disabled></button>
+    {{node.nodeType == 1? node.nodeName: 'Document'}}
+  </mat-tree-node>
+  <!-- This is the tree node template for expandable nodes -->
+  <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+    <button mat-icon-button matTreeNodeToggle
+            [attr.aria-label]="'Toggle ' + node.nodeType == 1? node.nodeName: 'Document'">
+      <mat-icon class="mat-icon-rtl-mirror">
+        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+      </mat-icon>
+    </button>
+    {{node.nodeType == 1? node.nodeName: 'Document'}}
+  </mat-tree-node>
+</mat-tree>

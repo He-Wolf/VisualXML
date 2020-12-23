@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ArrayDataSource } from '@angular/cdk/collections';
-import { NestedTreeControl } from '@angular/cdk/tree';
+import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
+import { FlatTreeControl } from '@angular/cdk/tree';
 import { XmlProcessorService } from "../services/xml-processor.service";
 
+export interface FlatTreeNode {
+  name: string;
+  level: number;
+  expandable: boolean;
+}
 
 @Component({
   selector: 'app-tree-view',
@@ -11,14 +16,47 @@ import { XmlProcessorService } from "../services/xml-processor.service";
 })
 export class TreeViewComponent implements OnInit {
 
-  constructor(
-    public xmlProcessor: XmlProcessorService
-    ) { }
-  
-  treeControl = new NestedTreeControl<Node> (node => this.getChildElements(node));
-  dataSource = new ArrayDataSource([this.xmlProcessor.xmlDom]);
+  treeControl: FlatTreeControl<FlatTreeNode>;
 
-  hasChild = (_: number, node: Node) => !!this.getChildElements(node) && this.getChildElements(node).length > 0;
+  treeFlattener: MatTreeFlattener<Node, FlatTreeNode>;
+
+  dataSource: MatTreeFlatDataSource<Node, FlatTreeNode>;
+
+  constructor(public xmlProcessor: XmlProcessorService){
+    this.treeFlattener = new MatTreeFlattener(
+      this.transformer,
+      this.getLevel,
+      this.isExpandable,
+      this.getChildren);
+
+    this.treeControl = new FlatTreeControl(this.getLevel, this.isExpandable);
+    this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
+    this.dataSource.data = [this.xmlProcessor.xmlDom];
+  }
+  
+  transformer(node: Node, level: number) {
+    return {
+      name: node.name,
+      level: level,
+      expandable: !!this.getChildElements(node) && this.getChildElements(node).length > 0
+    };
+  }
+
+  getLevel(node: FlatTreeNode) {
+    return node.level;
+  }
+
+  isExpandable(node: FlatTreeNode) {
+    return node.expandable;
+  }
+
+  hasChild(index: number, node: FlatTreeNode) {
+    return node.expandable;
+  }
+
+  getChildren(node: Node): Node[] | null | undefined {
+    return this.getChildElements(node);
+  }
   
   ngOnInit(): void {
   }

@@ -13,6 +13,10 @@ import { HomeComponent } from './home/home.component';
 import { ViewerComponent } from './viewer/viewer.component';
 import { TreeViewComponent } from './tree-view/tree-view.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ExampleTreeComponent } from './example-tree/example-tree.component';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -23,14 +27,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     CloseModalComponent,
     HomeComponent,
     ViewerComponent,
-    TreeViewComponent
+    TreeViewComponent,
+    ExampleTreeComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     CdkTreeModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatTreeModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent],

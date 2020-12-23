@@ -12,6 +12,7 @@ import { CloseModalComponent } from './close-modal/close-modal.component';
 import { HomeComponent } from './home/home.component';
 import { ViewerComponent } from './viewer/viewer.component';
 import { TreeViewComponent } from './tree-view/tree-view.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { TreeViewComponent } from './tree-view/tree-view.component';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    CdkTreeModule
+    CdkTreeModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

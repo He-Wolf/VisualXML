@@ -38,6 +38,7 @@ export class TreeViewComponent implements OnInit {
     return {
       name: node.nodeName,
       type: node.nodeType,
+      nodeInstance: node,
       level: level,
       expandable: !!this.getChildren(node) && this.getChildren(node).length > 0,
     };

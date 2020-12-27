@@ -1,15 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTreeModule } from '@angular/material/tree';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+
+import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { OpenModalComponent } from './open-modal/open-modal.component';
 import { SaveasModalComponent } from './saveas-modal/saveas-modal.component';
 import { CloseModalComponent } from './close-modal/close-modal.component';
 import { HomeComponent } from './home/home.component';
 import { ViewerComponent } from './viewer/viewer.component';
+import { TreeViewComponent } from './tree-view/tree-view.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +24,17 @@ import { ViewerComponent } from './viewer/viewer.component';
     SaveasModalComponent,
     CloseModalComponent,
     HomeComponent,
-    ViewerComponent
+    ViewerComponent,
+    TreeViewComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    BrowserAnimationsModule,
+    MatTreeModule,
+    MatIconModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent],

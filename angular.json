@@ -14,7 +14,9 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "allowedCommonJsDependencies": [
-               "xml2js"
+              "xml2js",
+              "file-saver",
+              "xmldom"
             ],
             "outputPath": "dist/VisualXML",
             "index": "src/index.html",
@@ -27,6 +29,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
@@ -95,6 +98,7 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -126,6 +130,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "VisualXML"
 }

@@ -31,9 +31,23 @@ export class OpenModalComponent implements OnInit {
   
   async parseXML(){
     this.xmlProcessor.xmlDom = await this.xmlProcessor.parseXML(this.fileToParse);
-    console.log(this.xmlProcessor.xmlDom)
+    console.log(this.xmlProcessor.xmlDom);
+    // console.log(JSON.stringify(this.xmlProcessor.xmlDom.childNodes, this.getCircularReplacer(), 4));
     this.fileStateService.isOpened = true;
     this.activeModal.close();
     this.router.navigate(['viewer']);
   }
+
+  getCircularReplacer = () => {
+    const seen = new WeakSet();
+    return (key, value) => {
+      if (typeof value === "object" && value !== null) {
+        if (seen.has(value)) {
+          return;
+        }
+        seen.add(value);
+      }
+      return value;
+    };
+  };
 }

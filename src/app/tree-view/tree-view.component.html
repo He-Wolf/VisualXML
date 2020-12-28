@@ -1,18 +1,19 @@
+<button mat-flat-button (click)="activateElement(xmlProcessor.xmlDom)">Document</button>
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
   <!-- This is the tree node template for leaf nodes -->
-  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+  <mat-tree-node *matTreeNodeDef="let element" matTreeNodePadding>
     <!-- use a disabled button to provide padding for tree leaf -->
     <button mat-icon-button disabled></button>
-    {{node.type == 1? node.name: 'Document'}}
+    <button mat-flat-button (click)="activateElement(element.elementInstance)">{{element.name}}</button>
   </mat-tree-node>
   <!-- This is the tree node template for expandable nodes -->
-  <mat-tree-node *matTreeNodeDef="let node;when: hasChild" matTreeNodePadding>
+  <mat-tree-node *matTreeNodeDef="let element;when: hasChild" matTreeNodePadding>
     <button mat-icon-button matTreeNodeToggle
-            [attr.aria-label]="'Toggle ' + node.nodeType == 1? node.nodeName: 'Document'">
+            [attr.aria-label]="'Toggle ' + element.name">
       <mat-icon class="mat-icon-rtl-mirror">
-        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+        {{treeControl.isExpanded(element) ? 'expand_more' : 'chevron_right'}}
       </mat-icon>
     </button>
-    {{node.type == 1? node.name: 'Document'}}
+    <button mat-flat-button (click)="activateElement(element.elementInstance)">{{element.name}}</button>
   </mat-tree-node>
 </mat-tree>

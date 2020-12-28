@@ -3,7 +3,7 @@ import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree'
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { XmlProcessorService } from "../services/xml-processor.service";
 
-export interface FlatTreeNode {
+export interface FlatTreeElement {
   name: string;
   level: number;
   expandable: boolean;
@@ -16,11 +16,14 @@ export interface FlatTreeNode {
 })
 export class TreeViewComponent implements OnInit {
 
-  treeControl: FlatTreeControl<FlatTreeNode>;
+  treeControl: FlatTreeControl<FlatTreeElement>;
 
-  treeFlattener: MatTreeFlattener<Node, FlatTreeNode>;
+  treeFlattener: MatTreeFlattener<Element, FlatTreeElement>;
 
-  dataSource: MatTreeFlatDataSource<Node, FlatTreeNode>;
+  dataSource: MatTreeFlatDataSource<Element, FlatTreeElement>;
+
+  ngOnInit(): void {
+  }
 
   constructor(public xmlProcessor: XmlProcessorService){
     this.treeFlattener = new MatTreeFlattener(
@@ -31,42 +34,36 @@ export class TreeViewComponent implements OnInit {
 
     this.treeControl = new FlatTreeControl(this.getLevel, this.isExpandable);
     this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
-    this.dataSource.data = [this.xmlProcessor.xmlDom];
+    this.dataSource.data = Object.values(this.xmlProcessor.xmlDom.children);
   }
   
-  transformer(node: Node, level: number) {
+  transformer(element: Element, level: number) {
     return {
-      name: node.nodeName,
-      type: node.nodeType,
+      name: element.nodeName,
+      elementInstance: element,
       level: level,
-      expandable: !!this.getChildren(node) && this.getChildren(node).length > 0,
+      expandable: !!element.childElementCount,
     };
   }
 
-  getLevel(node: FlatTreeNode) {
-    return node.level;
+  getLevel(element: FlatTreeElement) {
+    return element.level;
   }
 
-  isExpandable(node: FlatTreeNode) {
-    return node.expandable;
+  isExpandable(element: FlatTreeElement) {
+    return element.expandable;
   }
 
-  hasChild(index: number, node: FlatTreeNode) {
-    return node.expandable;
+  hasChild(index: number, element: FlatTreeElement) {
+    return element.expandable;
   }
 
-  getChildren(node: Node): Node[] | null | undefined {
-    let childElements: Node[] = [];
-    let allChildren: Node[] = Object.values(node.childNodes);
-
-    for (const child of allChildren) {
-      if(child.nodeType == 1)
-      childElements.push(child);
-    }
-
-    return childElements;
+  getChildren(element: Element): Element[] | null | undefined {
+  return Object.values(element.children);
   }
   
-  ngOnInit(): void {
+  activateElement(element: Element){
+    this.xmlProcessor.activeElement = element;
+    console.log(this.xmlProcessor.activeElement);
   }
 }

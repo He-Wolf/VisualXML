@@ -62,11 +62,8 @@ export class TreeViewComponent implements OnInit {
   return Object.values(element.children);
   }
   
-  writeNameToConsole(name: string): void {
-    console.log(name)
-  }
-
-  writeElementToConsole(element: Element): void {
-    console.log(element)
+  activateElement(element: Element){
+    this.xmlProcessor.activeElement = element;
+    console.log(this.xmlProcessor.activeElement);
   }
 }

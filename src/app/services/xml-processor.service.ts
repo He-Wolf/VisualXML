@@ -8,7 +8,7 @@ export class XmlProcessorService {
 
   xmlDom: any = null;
 
-  activeNode: Node = null;
+  activeElement: Node = null;
 
   constructor() { }
 

@@ -1,6 +1,15 @@
 <div *ngIf="fileStateService.isOpened; else elseBlock">
     <div *ngIf="xmlProcessor.xmlDom; else elseBlock">
-        <app-tree-view></app-tree-view>
+        <div style="width: 100; height: 500px; background: white;">
+            <as-split direction="horizontal" gutterSize="5">
+                <as-split-area minSize="20" maxSize="80" [size]="40">
+                    <app-tree-view></app-tree-view>
+                </as-split-area>
+                <as-split-area [size]="60">
+                    <p>Node data</p>
+                </as-split-area>
+            </as-split>
+        </div>
     </div>
     <ng-template #elseBlock>XMLdom is loading...</ng-template>
 </div>

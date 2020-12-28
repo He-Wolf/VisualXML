@@ -1,3 +1,4 @@
+<button mat-flat-button (click)="writeElementToConsole(xmlProcessor.xmlDom)">Document</button>
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
   <!-- This is the tree node template for leaf nodes -->
   <mat-tree-node *matTreeNodeDef="let element" matTreeNodePadding>

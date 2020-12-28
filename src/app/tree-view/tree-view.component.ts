@@ -22,6 +22,9 @@ export class TreeViewComponent implements OnInit {
 
   dataSource: MatTreeFlatDataSource<Node, FlatTreeNode>;
 
+  ngOnInit(): void {
+  }
+
   constructor(public xmlProcessor: XmlProcessorService){
     this.treeFlattener = new MatTreeFlattener(
       this.transformer,
@@ -68,6 +71,11 @@ export class TreeViewComponent implements OnInit {
     return childElements;
   }
   
-  ngOnInit(): void {
+  writeNameToConsole(name: string): void {
+    console.log(name)
+  }
+
+  writeNodeToConsole(node: Node): void {
+    console.log(node)
   }
 }

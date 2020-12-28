@@ -8,6 +8,8 @@ export class XmlProcessorService {
 
   xmlDom: any = null;
 
+  activeNode: Node = null;
+
   constructor() { }
 
   parseXML(fileToParse: File){

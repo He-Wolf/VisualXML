@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { XmlProcessorService } from "../services/xml-processor.service";
 
 @Component({
   selector: 'app-data-view',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DataViewComponent implements OnInit {
 
-  constructor() { }
+  constructor(public xmlProcessor: XmlProcessorService) { }
 
   ngOnInit(): void {
   }

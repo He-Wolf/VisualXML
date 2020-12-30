@@ -9,7 +9,10 @@
                 </as-split-area>
                 <as-split-area [size]="60">
                     <div class="h-100 position-relative overflow-auto">
-                        <app-data-view></app-data-view>
+                        <div *ngIf="!!xmlProcessor.activeElement; else elseBlock">
+                            <app-data-view></app-data-view>
+                        </div>
+                        <ng-template #elseBlock>Please select a node from tree view.</ng-template>
                     </div>
                 </as-split-area>
             </as-split>

@@ -1,1 +1,29 @@
-<p>Node data</p>
+<p>Child Elements:</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tag Name</th>
+            <th scope="col">Attributes</th>
+            <th scope="col">Text Content</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let childElement of xmlProcessor.activeElement.children; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ childElement.nodeName }}</td>
+            <td>
+                <p *ngFor="let attribute of childElement.attributes">
+                    <b>{{attribute.nodeName}}</b> {{attribute.nodeValue}}
+                </p>
+            </td>
+            <div *ngIf="childElement.childElementCount == 0; else elseBlock">
+                <td>{{ childElement.textContent}}</td>
+            </div>
+            <ng-template #elseBlock>
+                <td>N/A</td>
+            </ng-template>
+        </tr>
+    </tbody>
+</table>

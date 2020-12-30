@@ -20,6 +20,8 @@ import { DataViewComponent } from './data-view/data-view.component';
 import { ElementViewComponent } from './element-view/element-view.component';
 import { DocumentViewComponent } from './document-view/document-view.component';
 import { ChildElementViewComponent } from './child-element-view/child-element-view.component';
+import { DetailViewComponent } from './detail-view/detail-view.component';
+import { XmlViewComponent } from './xml-view/xml-view.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { ChildElementViewComponent } from './child-element-view/child-element-vi
     ElementViewComponent,
     DocumentViewComponent,
     ChildElementViewComponent,
+    DetailViewComponent,
+    XmlViewComponent,
   ],
   imports: [
     BrowserModule,

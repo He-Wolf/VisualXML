@@ -1,11 +1,12 @@
 <p>Child Elements:</p>
 
-<table class="table table-striped">
+<table *ngIf="xmlProcessor.activeElement.children.length; else elseBlock" class="table table-striped">
     <thead>
         <tr>
             <th scope="col">#</th>
             <th scope="col">Tag Name</th>
             <th scope="col">Attributes</th>
+            <th scope="col">Children</th>
             <th scope="col">Text Content</th>
         </tr>
     </thead>
@@ -13,17 +14,24 @@
         <tr *ngFor="let childElement of xmlProcessor.activeElement.children; index as i">
             <th scope="row">{{ i + 1 }}</th>
             <td>{{ childElement.nodeName }}</td>
-            <td>
+            <td *ngIf="childElement.attributes.length; else elseBlockAttr">
                 <p *ngFor="let attribute of childElement.attributes">
-                    <b>{{attribute.nodeName}}</b> {{attribute.nodeValue}}
+                    <b>{{attribute.nodeName}}:</b> {{attribute.nodeValue}}
                 </p>
             </td>
-            <div *ngIf="childElement.childElementCount == 0; else elseBlock">
-                <td>{{ childElement.textContent}}</td>
-            </div>
-            <ng-template #elseBlock>
+            <ng-template #elseBlockAttr>
+                <td>N/A</td>
+            </ng-template>
+            <td>{{ childElement.childElementCount }}</td>
+            <td *ngIf="childElement.childElementCount == 0; else elseBlockChild">
+                {{ childElement.textContent}}
+            </td>
+            <ng-template #elseBlockChild>
                 <td>N/A</td>
             </ng-template>
         </tr>
     </tbody>
 </table>
+<ng-template #elseBlock>
+    <p>None</p>
+</ng-template>

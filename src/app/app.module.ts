@@ -16,6 +16,7 @@ import { CloseModalComponent } from './close-modal/close-modal.component';
 import { HomeComponent } from './home/home.component';
 import { ViewerComponent } from './viewer/viewer.component';
 import { TreeViewComponent } from './tree-view/tree-view.component';
+import { DataViewComponent } from './data-view/data-view.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { TreeViewComponent } from './tree-view/tree-view.component';
     HomeComponent,
     ViewerComponent,
     TreeViewComponent,
+    DataViewComponent,
   ],
   imports: [
     BrowserModule,

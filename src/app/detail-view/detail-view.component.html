@@ -1,17 +1,17 @@
 <h3>Elements details:</h3>
 
-<h4>Tag:</h4>
+<h5>Tag:</h5>
 <p>{{xmlProcessor.activeElement.tagName}}</p>
 
-<h4>Local Name:</h4>
+<h5>Local Name:</h5>
 <p>{{xmlProcessor.activeElement.localName}}</p>
 
-<h4>Namespace:</h4>
+<h5>Namespace:</h5>
 <p>prefix: {{xmlProcessor.activeElement.prefix}}</p>
 <p>URI: {{xmlProcessor.activeElement.namespaceURI}}</p>
 
-<h4>Attributes:</h4>
-<table *ngIf="xmlProcessor.activeElement.attributes.length; else elseBlockAttr" class="table table-striped">
+<h5>Attributes:</h5>
+<table *ngIf="xmlProcessor.activeElement.attributes.length; else elseBlockAttr" class="table table-striped w-auto">
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -32,11 +32,12 @@
     </tbody>
 </table>
 <ng-template #elseBlockAttr>
-    <p>None</p>
+    <p><i>None</i></p>
 </ng-template>
 
-<h4>Text Content:</h4>
-<p *ngIf="xmlProcessor.activeElement.childElementCount == 0 && xmlProcessor.activeElement.textContent; else elseBlockText">
+<h5>Text Content:</h5>
+<p
+    *ngIf="xmlProcessor.activeElement.childElementCount == 0 && xmlProcessor.activeElement.textContent; else elseBlockText">
     {{xmlProcessor.activeElement.textContent}}
 </p>
 <ng-template #elseBlockText>

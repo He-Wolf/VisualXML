@@ -3,12 +3,12 @@
         <div class="w-100 h-100">
             <as-split direction="horizontal" gutterSize="5">
                 <as-split-area minSize="20" maxSize="80" [size]="40">
-                    <div class="h-100 position-relative overflow-auto">
+                    <div class="h-100 position-relative overflow-auto p-2">
                         <app-tree-view class="flex-grow-1"></app-tree-view>
                     </div>
                 </as-split-area>
                 <as-split-area [size]="60">
-                    <div class="h-100 position-relative overflow-auto">
+                    <div class="h-100 position-relative overflow-auto p-2">
                         <div *ngIf="!!xmlProcessor.activeElement; else elseBlock">
                             <app-data-view></app-data-view>
                         </div>

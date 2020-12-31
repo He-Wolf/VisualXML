@@ -1,6 +1,6 @@
-<h4>Child Elements:</h4>
+<h5>Child Elements:</h5>
 
-<table *ngIf="xmlProcessor.activeElement.children.length; else elseBlock" class="table table-striped">
+<table *ngIf="xmlProcessor.activeElement.children.length; else elseBlock" class="table table-striped w-auto">
     <thead>
         <tr>
             <th scope="col">#</th>
@@ -20,7 +20,7 @@
                 </p>
             </td>
             <ng-template #elseBlockAttr>
-                <td>N/A</td>
+                <td><i>None</i></td>
             </ng-template>
             <td>{{ childElement.childElementCount }}</td>
             <td *ngIf="childElement.childElementCount == 0; else elseBlockChild">
@@ -33,5 +33,5 @@
     </tbody>
 </table>
 <ng-template #elseBlock>
-    <p>None</p>
+    <p><i>None</i></p>
 </ng-template>

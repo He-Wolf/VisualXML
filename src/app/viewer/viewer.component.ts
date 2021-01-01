@@ -6,7 +6,7 @@ import { FileStateService } from "../services/file-state.service";
   selector: 'app-viewer',
   templateUrl: './viewer.component.html',
   styleUrls: ['./viewer.component.css'],
-  host: {'class': 'w-100 h-100'}
+  host: {'class': 'h-100 d-flex'}
 })
 export class ViewerComponent implements OnInit {
 

@@ -1,23 +1,26 @@
-<div class="h-100" *ngIf="fileStateService.isOpened; else elseBlock">
-    <div class="h-100" *ngIf="xmlProcessor.xmlDom; else elseBlock">
-        <div class="w-100 h-100">
-            <as-split direction="horizontal" gutterSize="5">
-                <as-split-area minSize="20" maxSize="80" [size]="40">
-                    <div class="h-100 position-relative overflow-auto p-2">
-                        <app-tree-view class="flex-grow-1"></app-tree-view>
-                    </div>
-                </as-split-area>
-                <as-split-area [size]="60">
-                    <div class="h-100 position-relative overflow-auto p-2">
-                        <div *ngIf="!!xmlProcessor.activeElement; else elseBlock">
-                            <app-data-view></app-data-view>
-                        </div>
-                        <ng-template #elseBlock>Please select a node from tree view.</ng-template>
-                    </div>
-                </as-split-area>
-            </as-split>
-        </div>
-    </div>
-    <ng-template #elseBlock>XMLdom is loading...</ng-template>
-</div>
-<ng-template #elseBlock>No XML document has been opened</ng-template>
+<ng-template [ngIf]="fileStateService.isOpened" [ngIfElse]="elseBlock">
+    <ng-template [ngIf]="xmlProcessor.xmlDom" [ngIfElse]="elseBlock">
+        <as-split direction="horizontal" gutterSize="5">
+            <as-split-area minSize="20" maxSize="80" [size]="40">
+                <div class="flex-grow-1 h-100 position-relative overflow-auto p-2">
+                    <app-tree-view></app-tree-view>
+                </div>
+            </as-split-area>
+            <as-split-area [size]="60">
+                <div class="h-100 position-relative overflow-auto p-2"
+                    *ngIf="!!xmlProcessor.activeElement; else elseBlock">
+                    <app-data-view></app-data-view>
+                </div>
+                <ng-template #elseBlock>
+                    <p>Select a node from tree view.</p>
+                </ng-template>
+            </as-split-area>
+        </as-split>
+    </ng-template>
+    <ng-template #elseBlock>
+        <p>XMLdom is loading...</p>
+    </ng-template>
+</ng-template>
+<ng-template #elseBlock>
+    <p>No XML document has been opened</p>
+</ng-template>

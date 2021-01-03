@@ -36,7 +36,6 @@ export class XmlProcessorService {
   }
 
   addUUID(){
-
     this.xmlDom["uuid"] = uuidv4();
 
     let allElements = this.xmlDom.querySelectorAll("*");
@@ -44,9 +43,5 @@ export class XmlProcessorService {
     for (const element of allElements) {
       element["uuid"] = uuidv4();
     }
-
-    console.log(allElements.length);
-    console.log(allElements);
-    console.log(this.xmlDom);
   }
 }

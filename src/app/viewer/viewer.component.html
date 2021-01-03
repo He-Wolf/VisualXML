@@ -1,20 +1,26 @@
-<div class="h-100" *ngIf="fileStateService.isOpened; else elseBlock">
-    <div class="h-100" *ngIf="xmlProcessor.xmlDom; else elseBlock">
-        <div style="width: 100; height: 100%; background: white;">
-            <as-split direction="horizontal" gutterSize="5">
-                <as-split-area minSize="20" maxSize="80" [size]="40">
-                    <div class="h-100 position-relative overflow-auto">
-                        <app-tree-view></app-tree-view>
-                    </div>
-                </as-split-area>
-                <as-split-area [size]="60">
-                    <div class="h-100 position-relative overflow-auto">
-                        <p>Node data</p>
-                    </div>
-                </as-split-area>
-            </as-split>
-        </div>
-    </div>
-    <ng-template #elseBlock>XMLdom is loading...</ng-template>
-</div>
-<ng-template #elseBlock>No XML document has been opened</ng-template>
+<ng-template [ngIf]="fileStateService.isOpened" [ngIfElse]="elseBlock">
+    <ng-template [ngIf]="xmlProcessor.xmlDom" [ngIfElse]="elseBlock">
+        <as-split direction="horizontal" gutterSize="5">
+            <as-split-area minSize="20" maxSize="80" [size]="30">
+                <div class="h-100 position-relative overflow-auto p-4">
+                    <app-tree-view></app-tree-view>
+                </div>
+            </as-split-area>
+            <as-split-area [size]="70">
+                <div class="h-100 position-relative overflow-auto p-4"
+                    *ngIf="!!xmlProcessor.activeElement; else elseBlock">
+                    <app-data-view></app-data-view>
+                </div>
+                <ng-template #elseBlock>
+                    <p class="p-4">Select a node from tree view.</p>
+                </ng-template>
+            </as-split-area>
+        </as-split>
+    </ng-template>
+    <ng-template #elseBlock>
+        <p class="p-4">XMLdom is loading...</p>
+    </ng-template>
+</ng-template>
+<ng-template #elseBlock>
+    <p class="p-4">No XML document has been opened</p>
+</ng-template>

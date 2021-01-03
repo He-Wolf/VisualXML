@@ -1,0 +1,45 @@
+<h3>Elements details:</h3>
+
+<h5>Tag:</h5>
+<p>{{xmlProcessor.activeElement.tagName}}</p>
+
+<h5>Local Name:</h5>
+<p>{{xmlProcessor.activeElement.localName}}</p>
+
+<h5>Namespace:</h5>
+<p>prefix: {{xmlProcessor.activeElement.prefix}}</p>
+<p>URI: {{xmlProcessor.activeElement.namespaceURI}}</p>
+
+<h5>Attributes:</h5>
+<table *ngIf="xmlProcessor.activeElement.attributes.length; else elseBlockAttr" class="table table-striped w-auto">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Attribute</th>
+            <th scope="col">Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let attribute of xmlProcessor.activeElement.attributes; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>
+                <p>{{attribute.nodeName}}</p>
+            </td>
+            <td>
+                <p>{{attribute.nodeValue}}</p>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<ng-template #elseBlockAttr>
+    <p><i>None</i></p>
+</ng-template>
+
+<h5>Text Content:</h5>
+<p
+    *ngIf="xmlProcessor.activeElement.childElementCount == 0 && xmlProcessor.activeElement.textContent; else elseBlockText">
+    {{xmlProcessor.activeElement.textContent}}
+</p>
+<ng-template #elseBlockText>
+    <p><i>None</i></p>
+</ng-template>

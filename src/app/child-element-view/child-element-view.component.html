@@ -1,0 +1,37 @@
+<h5>Child Elements:</h5>
+
+<table *ngIf="xmlProcessor.activeElement.children.length; else elseBlock" class="table table-striped w-auto">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tag Name</th>
+            <th scope="col">Attributes</th>
+            <th scope="col">Children</th>
+            <th scope="col">Text Content</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let childElement of xmlProcessor.activeElement.children; index as i">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ childElement.nodeName }}</td>
+            <td *ngIf="childElement.attributes.length; else elseBlockAttr">
+                <p *ngFor="let attribute of childElement.attributes">
+                    <b>{{attribute.nodeName}}:</b> {{attribute.nodeValue}}
+                </p>
+            </td>
+            <ng-template #elseBlockAttr>
+                <td><i>None</i></td>
+            </ng-template>
+            <td>{{ childElement.childElementCount }}</td>
+            <td *ngIf="childElement.childElementCount == 0; else elseBlockChild">
+                {{ childElement.textContent}}
+            </td>
+            <ng-template #elseBlockChild>
+                <td>N/A</td>
+            </ng-template>
+        </tr>
+    </tbody>
+</table>
+<ng-template #elseBlock>
+    <p><i>None</i></p>
+</ng-template>

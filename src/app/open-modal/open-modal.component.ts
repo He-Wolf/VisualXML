@@ -33,6 +33,7 @@ export class OpenModalComponent implements OnInit {
     this.xmlProcessor.xmlDom = null;
     this.xmlProcessor.xmlDom = await this.xmlProcessor.parseXML(this.fileToParse);
     console.log(this.xmlProcessor.xmlDom);
+    this.xmlProcessor.addUUID();
     // console.log(JSON.stringify(this.xmlProcessor.xmlDom.childNodes, this.getCircularReplacer(), 4));
     this.fileStateService.isOpened = true;
     this.activeModal.close();

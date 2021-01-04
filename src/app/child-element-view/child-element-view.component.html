@@ -13,7 +13,7 @@
     <tbody>
         <tr *ngFor="let childElement of xmlProcessor.activeElement.children; index as i">
             <th scope="row">{{ i + 1 }}</th>
-            <td>{{ childElement.nodeName }}</td>
+            <td><a href="javascript:void(0);" (click)="selectElementById(childElement.uuid)">{{ childElement.nodeName }}</a></td>
             <td *ngIf="childElement.attributes.length; else elseBlockAttr">
                 <p *ngFor="let attribute of childElement.attributes">
                     <b>{{attribute.nodeName}}:</b> {{attribute.nodeValue}}

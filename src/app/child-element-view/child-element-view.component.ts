@@ -13,4 +13,9 @@ export class ChildElementViewComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  selectElementById(uuid:string){
+    let actButton = document.getElementById(uuid);
+    actButton.click();
+    actButton.focus();
+  }
 }

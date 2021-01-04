@@ -1,4 +1,5 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { XmlProcessorService } from "../services/xml-processor.service";
 
 @Component({
   selector: 'app-ancestors',
@@ -11,7 +12,7 @@ export class AncestorsComponent implements OnChanges {
 
   ancestors: Element[] = [];
 
-  constructor() { }
+  constructor(public xmlProcessor: XmlProcessorService) { }
 
   ngOnChanges(changes: SimpleChanges) {
     this.ancestors = [];
@@ -19,16 +20,18 @@ export class AncestorsComponent implements OnChanges {
   }
   
   private getAncestors(){
-    console.log('getAncestor1: ', this.actElement);
-    console.log(this.actElement.parentElement);
     let aElement = this.actElement;
     while(aElement.parentElement!=null){
       let parentElement = aElement.parentElement
-      console.log('getAncestor2: ', parentElement);
       this.ancestors.push(parentElement);
       aElement = parentElement;
     }
     this.ancestors.reverse();
-    console.log('getAncestor3: ', this.ancestors);
+  }
+
+  selectElementById(uuid:string){
+    let actButton = document.getElementById(uuid);
+    actButton.click();
+    actButton.focus();
   }
 }

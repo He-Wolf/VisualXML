@@ -3,13 +3,8 @@ import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree'
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { XmlProcessorService } from "../services/xml-processor.service";
 import { GuidShareService } from "../services/guid-share.service";
-
-export interface FlatTreeElement {
-  name: string;
-  elementInstance: Element;
-  level: number;
-  expandable: boolean;
-}
+import { FlatTreeElement } from "./flat-tree-element.interface";
+import { ElementWithUUID } from "./element-with-uuid.interface";
 
 @Component({
   selector: 'app-tree-view',
@@ -40,7 +35,7 @@ export class TreeViewComponent implements OnInit {
     this.dataSource.data = Object.values(this.xmlProcessor.xmlDom.children);
   }
   
-  transformer(element: Element, level: number) {
+  transformer(element: ElementWithUUID, level: number) {
     return {
       name: element.nodeName,
       elementInstance: element,
@@ -70,7 +65,7 @@ export class TreeViewComponent implements OnInit {
     console.log(this.xmlProcessor.activeElement);
   }
 
-  expandAncestors(uuid: string){
+  private expandAncestors(uuid: string){
     let selectedNode = this.getNodeByGuid(uuid);
 
     if(selectedNode){
@@ -88,17 +83,17 @@ export class TreeViewComponent implements OnInit {
     selectedButton.focus();
   }
 
-  getNodeByGuid(uuid: string): FlatTreeElement{
+  private getNodeByGuid(uuid: string): FlatTreeElement{
     for (const node of this.treeControl.dataNodes) {
       let nodeInstance = node.elementInstance;
-      if(Object.values(nodeInstance)[Object.values(nodeInstance).length - 1] == uuid){
+      if(nodeInstance.uuid == uuid){
         return node;
       }
     }
     return null;
   }
 
-  collectAncestors(selectedNode: FlatTreeElement): FlatTreeElement[]{
+  private collectAncestors(selectedNode: FlatTreeElement): FlatTreeElement[]{
     let ancestorArray = [];
     ancestorArray.push(selectedNode);
 

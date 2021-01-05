@@ -5,6 +5,7 @@ import { XmlProcessorService } from "../services/xml-processor.service";
 
 export interface FlatTreeElement {
   name: string;
+  elementInstance: Element;
   level: number;
   expandable: boolean;
 }
@@ -65,5 +66,50 @@ export class TreeViewComponent implements OnInit {
   activateElement(element: Element){
     this.xmlProcessor.activeElement = element;
     console.log(this.xmlProcessor.activeElement);
+  }
+
+  expandAncestors(uuid: string){
+    let selectedNode = this.getNodeByGuid(uuid);
+    let ancestorNodes = this.collectAncestors(selectedNode);
+
+    for (const ancestor of ancestorNodes) {
+      if(!this.treeControl.isExpanded(ancestor)){
+        this.treeControl.expand(ancestor);
+      }
+    }
+    
+    let selectedButton = document.getElementById(uuid);
+    selectedButton.click();
+    selectedButton.focus();
+  }
+
+  getNodeByGuid(uuid: string): FlatTreeElement{
+    for (const node of this.treeControl.dataNodes) {
+      let nodeInstance = node.elementInstance;
+      if(Object.values(nodeInstance)[Object.values(nodeInstance).length - 1] == uuid){
+        return node;
+      }
+    }
+    return null;
+  }
+
+  collectAncestors(selectedNode: FlatTreeElement): FlatTreeElement[]{
+    let ancestorArray = [];
+    ancestorArray.push(selectedNode);
+
+    let dataNodes = this.treeControl.dataNodes;
+    let selectedNodeIndex = dataNodes.indexOf(selectedNode);
+    let actualLevel = selectedNode.level;
+
+    for(let i = selectedNodeIndex; i >= 0; i--){
+      if(dataNodes[i].level < actualLevel){
+        ancestorArray.push(dataNodes[i]);
+        actualLevel = dataNodes[i].level;
+      }
+    }
+
+    ancestorArray.reverse();
+
+    return ancestorArray;
   }
 }

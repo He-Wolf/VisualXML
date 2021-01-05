@@ -22,6 +22,7 @@ import { DocumentViewComponent } from './document-view/document-view.component';
 import { ChildElementViewComponent } from './child-element-view/child-element-view.component';
 import { DetailViewComponent } from './detail-view/detail-view.component';
 import { XmlViewComponent } from './xml-view/xml-view.component';
+import { AncestorsComponent } from './ancestors/ancestors.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { XmlViewComponent } from './xml-view/xml-view.component';
     ChildElementViewComponent,
     DetailViewComponent,
     XmlViewComponent,
+    AncestorsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { saveAs } from 'file-saver';
+import { v4 as uuidv4 } from 'uuid';
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +33,15 @@ export class XmlProcessorService {
 
     const blob = new Blob([xml], {type: "text/plain;charset=utf-8"});
     saveAs(blob, "default.xml");
+  }
+
+  addUUID(){
+    this.xmlDom["uuid"] = uuidv4();
+
+    let allElements = this.xmlDom.querySelectorAll("*");
+    
+    for (const element of allElements) {
+      element["uuid"] = uuidv4();
+    }
   }
 }

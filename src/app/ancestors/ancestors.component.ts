@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { XmlProcessorService } from "../services/xml-processor.service";
+import { GuidShareService } from "../services/guid-share.service";
 
 @Component({
   selector: 'app-ancestors',
@@ -12,7 +13,7 @@ export class AncestorsComponent implements OnChanges {
 
   ancestors: Element[] = [];
 
-  constructor(public xmlProcessor: XmlProcessorService) { }
+  constructor(public xmlProcessor: XmlProcessorService, public guidSender: GuidShareService) { }
 
   ngOnChanges(changes: SimpleChanges) {
     this.ancestors = [];
@@ -30,8 +31,6 @@ export class AncestorsComponent implements OnChanges {
   }
 
   selectElementById(uuid:string){
-    let actButton = document.getElementById(uuid);
-    actButton.click();
-    actButton.focus();
+    this.guidSender.changeGuid(uuid);
   }
 }

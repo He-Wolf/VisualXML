@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatTreeFlatDataSource, MatTreeFlattener } from '@angular/material/tree';
 import { FlatTreeControl } from '@angular/cdk/tree';
 import { XmlProcessorService } from "../services/xml-processor.service";
+import { GuidShareService } from "../services/guid-share.service";
 
 export interface FlatTreeElement {
   name: string;
@@ -24,9 +25,10 @@ export class TreeViewComponent implements OnInit {
   dataSource: MatTreeFlatDataSource<Element, FlatTreeElement>;
 
   ngOnInit(): void {
+    this.guidSender.currentGuid.subscribe(guid=>this.expandAncestors(<string>guid))
   }
 
-  constructor(public xmlProcessor: XmlProcessorService){
+  constructor(public xmlProcessor: XmlProcessorService, public guidSender: GuidShareService){
     this.treeFlattener = new MatTreeFlattener(
       this.transformer,
       this.getLevel,

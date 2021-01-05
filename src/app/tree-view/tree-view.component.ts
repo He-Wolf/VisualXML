@@ -72,11 +72,14 @@ export class TreeViewComponent implements OnInit {
 
   expandAncestors(uuid: string){
     let selectedNode = this.getNodeByGuid(uuid);
-    let ancestorNodes = this.collectAncestors(selectedNode);
 
-    for (const ancestor of ancestorNodes) {
-      if(!this.treeControl.isExpanded(ancestor)){
-        this.treeControl.expand(ancestor);
+    if(selectedNode){
+      let ancestorNodes = this.collectAncestors(selectedNode);
+
+      for (const ancestor of ancestorNodes) {
+        if(!this.treeControl.isExpanded(ancestor)){
+          this.treeControl.expand(ancestor);
+        }
       }
     }
     

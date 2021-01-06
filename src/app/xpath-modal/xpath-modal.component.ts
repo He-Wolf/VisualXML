@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { Step } from "./step";
+import { ClipboardJS } from "clipboard";
 
 @Component({
   selector: 'app-xpath-modal',
@@ -7,21 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class XpathModalComponent implements OnInit {
 
-  constructor() { }
+  constructor(public activeModal: NgbActiveModal,) { }
 
   ngOnInit(): void {
+    const btn = document.getElementById('xpathBtn');
+    const clipboard = new ClipboardJS(btn);
   }
-
-  
-
-
-
 
   // Copyright 2018 The Chromium Authors. All rights reserved.
   // Use of this source code is governed by a BSD-style license that can be
   // found in the LICENSE file.
 
-  xPath = function (node, optimized) {
+  xPath(node, optimized) {
     if (node.nodeType === Node.DOCUMENT_NODE) {
       return '/';
     }
@@ -44,7 +44,7 @@ export class XpathModalComponent implements OnInit {
     return (steps.length && steps[0].optimized ? '' : '/') + steps.join('/');
   };
   
-  _xPathValue = function (node, optimized) {
+  _xPathValue(node, optimized) {
     let ownValue;
     const ownIndex = this._xPathIndex(node);
     if (ownIndex === -1) {
@@ -86,7 +86,7 @@ export class XpathModalComponent implements OnInit {
     return new Step(ownValue, node.nodeType === Node.DOCUMENT_NODE);
   };
 
-  _xPathIndex = function (node) {
+  _xPathIndex(node) {
     // Returns -1 in case of error, 0 if no siblings matching the same expression,
     // <XPath index among the same expression-matching sibling nodes> otherwise.
     function areNodesSimilar(left, right) {
@@ -133,18 +133,4 @@ export class XpathModalComponent implements OnInit {
     }
     return -1; // An error occurred: |node| not found in parent's children.
   };
-}
-
-class Step {
-  value;
-  optimized;
-  
-  constructor(value, optimized) {
-    this.value = value;
-    this.optimized = optimized || false;
-  }
-
-  toString() {
-    return this.value;
-  }
 }

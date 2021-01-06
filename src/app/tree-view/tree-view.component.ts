@@ -20,10 +20,10 @@ export class TreeViewComponent implements OnInit {
   dataSource: MatTreeFlatDataSource<Element, FlatTreeElement>;
 
   ngOnInit(): void {
-    this.guidSender.currentGuid.subscribe(guid=>this.expandAncestors(<string>guid))
+    this.guidSender.currentGuid.subscribe(guid => this.expandAncestors(<string>guid))
   }
 
-  constructor(public xmlProcessor: XmlProcessorService, public guidSender: GuidShareService){
+  constructor(public xmlProcessor: XmlProcessorService, public guidSender: GuidShareService) {
     this.treeFlattener = new MatTreeFlattener(
       this.transformer,
       this.getLevel,
@@ -34,7 +34,7 @@ export class TreeViewComponent implements OnInit {
     this.dataSource = new MatTreeFlatDataSource(this.treeControl, this.treeFlattener);
     this.dataSource.data = Object.values(this.xmlProcessor.xmlDom.children);
   }
-  
+
   transformer(element: ElementWithUUID, level: number) {
     return {
       name: element.nodeName,
@@ -57,43 +57,43 @@ export class TreeViewComponent implements OnInit {
   }
 
   getChildren(element: Element): Element[] | null | undefined {
-  return Object.values(element.children);
+    return Object.values(element.children);
   }
-  
-  activateElement(element: Element){
+
+  activateElement(element: Element) {
     this.xmlProcessor.activeElement = element;
     console.log(this.xmlProcessor.activeElement);
   }
 
-  private expandAncestors(uuid: string){
+  private expandAncestors(uuid: string) {
     let selectedNode = this.getNodeByGuid(uuid);
 
-    if(selectedNode){
+    if (selectedNode) {
       let ancestorNodes = this.collectAncestors(selectedNode);
 
       for (const ancestor of ancestorNodes) {
-        if(!this.treeControl.isExpanded(ancestor)){
+        if (!this.treeControl.isExpanded(ancestor)) {
           this.treeControl.expand(ancestor);
         }
       }
     }
-    
+
     let selectedButton = document.getElementById(uuid);
     selectedButton.click();
     selectedButton.focus();
   }
 
-  private getNodeByGuid(uuid: string): FlatTreeElement{
+  private getNodeByGuid(uuid: string): FlatTreeElement {
     for (const node of this.treeControl.dataNodes) {
       let nodeInstance = node.elementInstance;
-      if(nodeInstance.uuid == uuid){
+      if (nodeInstance.uuid == uuid) {
         return node;
       }
     }
     return null;
   }
 
-  private collectAncestors(selectedNode: FlatTreeElement): FlatTreeElement[]{
+  private collectAncestors(selectedNode: FlatTreeElement): FlatTreeElement[] {
     let ancestorArray = [];
     ancestorArray.push(selectedNode);
 
@@ -101,8 +101,8 @@ export class TreeViewComponent implements OnInit {
     let selectedNodeIndex = dataNodes.indexOf(selectedNode);
     let actualLevel = selectedNode.level;
 
-    for(let i = selectedNodeIndex; i >= 0; i--){
-      if(dataNodes[i].level < actualLevel){
+    for (let i = selectedNodeIndex; i >= 0; i--) {
+      if (dataNodes[i].level < actualLevel) {
         ancestorArray.push(dataNodes[i]);
         actualLevel = dataNodes[i].level;
       }

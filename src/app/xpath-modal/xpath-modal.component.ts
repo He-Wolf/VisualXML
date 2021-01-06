@@ -22,7 +22,7 @@ export class XpathModalComponent implements OnInit {
   // Use of this source code is governed by a BSD-style license that can be
   // found in the LICENSE file.
 
-  xPath(node, optimized) {
+  xPath(node: Node, optimized: boolean) {
     if (node.nodeType === Node.DOCUMENT_NODE) {
       return '/';
     }
@@ -45,8 +45,8 @@ export class XpathModalComponent implements OnInit {
     return (steps.length && steps[0].optimized ? '' : '/') + steps.join('/');
   };
   
-  _xPathValue(node, optimized) {
-    let ownValue;
+  _xPathValue(node: Node, optimized: boolean) {
+    let ownValue: string;
     const ownIndex = this._xPathIndex(node);
     if (ownIndex === -1) {
       return null;
@@ -54,10 +54,10 @@ export class XpathModalComponent implements OnInit {
 
     switch (node.nodeType) {
       case Node.ELEMENT_NODE:
-        if (optimized && node.getAttribute('id')) {
-          return new Step('//*[@id="' + node.getAttribute('id') + '"]', true);
+        if (optimized && (<Element>node).getAttribute('id')) {
+          return new Step('//*[@id="' + (<Element>node).getAttribute('id') + '"]', true);
         }
-        ownValue = node.localName;
+        ownValue = (<Element>node).localName;
         break;
       case Node.ATTRIBUTE_NODE:
         ownValue = '@' + node.nodeName;
@@ -87,16 +87,16 @@ export class XpathModalComponent implements OnInit {
     return new Step(ownValue, node.nodeType === Node.DOCUMENT_NODE);
   };
 
-  _xPathIndex(node) {
+  _xPathIndex(node: Node) {
     // Returns -1 in case of error, 0 if no siblings matching the same expression,
     // <XPath index among the same expression-matching sibling nodes> otherwise.
-    function areNodesSimilar(left, right) {
+    function areNodesSimilar(left: Node, right:Node) {
       if (left === right) {
         return true;
       }
 
       if (left.nodeType === Node.ELEMENT_NODE && right.nodeType === Node.ELEMENT_NODE) {
-        return left.localName === right.localName;
+        return (<Element>left).localName === (<Element>right).localName;
       }
 
       if (left.nodeType === right.nodeType) {
@@ -113,7 +113,7 @@ export class XpathModalComponent implements OnInit {
     if (!siblings) {
       return 0;
     } // Root node - no siblings.
-    let hasSameNamedElements;
+    let hasSameNamedElements: boolean;
     for (let i = 0; i < siblings.length; ++i) {
       if (areNodesSimilar(node, siblings[i]) && siblings[i] !== node) {
         hasSameNamedElements = true;

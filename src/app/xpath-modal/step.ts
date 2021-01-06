@@ -3,8 +3,8 @@
 // found in the LICENSE file.
 
 export class Step {
-    value;
-    optimized;
+    value: string;
+    optimized: boolean;
     
     constructor(value, optimized) {
       this.value = value;

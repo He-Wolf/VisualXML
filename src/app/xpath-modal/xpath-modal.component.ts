@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
+import { XmlProcessorService } from "../services/xml-processor.service";
 import { Step } from "./step";
-import { ClipboardJS } from "clipboard";
+import ClipboardJS from "clipboard";
 
 @Component({
   selector: 'app-xpath-modal',
@@ -10,7 +11,7 @@ import { ClipboardJS } from "clipboard";
 })
 export class XpathModalComponent implements OnInit {
 
-  constructor(public activeModal: NgbActiveModal,) { }
+  constructor(public activeModal: NgbActiveModal, public xmlProcessor: XmlProcessorService) { }
 
   ngOnInit(): void {
     const btn = document.getElementById('xpathBtn');

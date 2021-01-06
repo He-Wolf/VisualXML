@@ -1,7 +1,16 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="javascript:void(0);" (click)="selectElementById(xmlProcessor.xmlDom.uuid)">Document</a></li>
-        <li *ngFor="let ancestor of ancestors" class="breadcrumb-item"><a href="javascript:void(0);" (click)="selectElementById(ancestor.uuid)">{{ancestor.tagName}}</a></li>
-        <li class="breadcrumb-item active" aria-current="page">{{actElement.tagName}}</li>
+        <ng-template [ngIf]="xmlProcessor.xmlDom != xmlProcessor.activeElement" [ngIfElse]="elseBlock">
+            <li class="breadcrumb-item">
+                <a href="javascript:void(0);" (click)="selectElementById(xmlProcessor.xmlDom.uuid)">Document</a>
+            </li>
+            <li *ngFor="let ancestor of ancestors" class="breadcrumb-item">
+                <a href="javascript:void(0);" (click)="selectElementById(ancestor.uuid)">{{ancestor.tagName}}</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">{{actElement.tagName}}</li>
+        </ng-template>
+        <ng-template #elseBlock>
+            <li class="breadcrumb-item active" aria-current="page">Document</li>
+        </ng-template>
     </ol>
 </nav>

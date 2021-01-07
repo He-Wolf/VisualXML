@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class FileStateService {
   isOpened: boolean = false;
+  ifError: boolean = false;
 
   constructor() { }
 }

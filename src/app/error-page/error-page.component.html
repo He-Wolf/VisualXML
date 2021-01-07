@@ -1,0 +1,8 @@
+<ng-template [ngIf]="fileStateService.ifError" [ngIfElse]="elseBlock">
+    <div class="p-4">
+        <p>{{getErrorMessage()}}</p>
+    </div>
+</ng-template>
+<ng-template #elseBlock>
+    <p class="p-4">No Error</p>
+</ng-template>

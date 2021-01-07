@@ -24,6 +24,7 @@ import { DetailViewComponent } from './detail-view/detail-view.component';
 import { XmlViewComponent } from './xml-view/xml-view.component';
 import { AncestorsComponent } from './ancestors/ancestors.component';
 import { XpathModalComponent } from './xpath-modal/xpath-modal.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { XpathModalComponent } from './xpath-modal/xpath-modal.component';
     XmlViewComponent,
     AncestorsComponent,
     XpathModalComponent,
+    ErrorPageComponent,
   ],
   imports: [
     BrowserModule,

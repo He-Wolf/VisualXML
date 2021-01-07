@@ -30,17 +30,17 @@ export class ErrorPageComponent implements OnInit {
     if(parseErrors.length) {
       const parseDiv = parseErrors[0].getElementsByTagName("div");
       console.log(parseDiv);
-      if(parseDiv.lenght){
+      if(parseDiv[0]){
         console.log(parseDiv[0].innerText);
         return parseDiv[0].innerText;
       }
       const parseSourcetext = parseErrors[0].getElementsByTagName("sourcetext");
       console.log(parseSourcetext);
-      if(parseSourcetext.lenght) {
-        console.log(parseErrors[0].innerText);
-        console.log(parseSourcetext[0].innerText);
-        return `${parseErrors[0].innerText}
-        ${parseSourcetext[0].innerText}`
+      if(parseSourcetext[0]) {
+        console.log(parseErrors[0].firstChild.textContent);
+        console.log(parseSourcetext[0].textContent);
+        return `${parseErrors[0].firstChild.textContent}
+        ${parseSourcetext[0].textContent}`
       }
     }
   }

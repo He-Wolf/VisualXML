@@ -1,0 +1,14 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-primary-title">xPath of Element</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body centered">
+    <div class="input-group mb-3">
+        <input id="foo" class="form-control" type="text" readonly [value]="xPath(xmlProcessor.activeElement, false)">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" id="xpathBtn" data-clipboard-target="#foo">COPY</button>
+        </div>
+    </div>
+</div>

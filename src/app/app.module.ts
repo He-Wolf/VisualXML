@@ -23,6 +23,7 @@ import { ChildElementViewComponent } from './child-element-view/child-element-vi
 import { DetailViewComponent } from './detail-view/detail-view.component';
 import { XmlViewComponent } from './xml-view/xml-view.component';
 import { AncestorsComponent } from './ancestors/ancestors.component';
+import { XpathModalComponent } from './xpath-modal/xpath-modal.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { AncestorsComponent } from './ancestors/ancestors.component';
     DetailViewComponent,
     XmlViewComponent,
     AncestorsComponent,
+    XpathModalComponent,
   ],
   imports: [
     BrowserModule,

@@ -24,21 +24,21 @@ export class ErrorPageComponent implements OnInit {
     // }
   }
 
-  getErrorMessage(){
+  getErrorMessage() {
     const parseErrors = this.xmlProcessor.xmlDom.getElementsByTagName("parsererror");
-    console.log(parseErrors);
     if(parseErrors.length) {
       const parseDiv = parseErrors[0].getElementsByTagName("div");
-      console.log(parseDiv);
-      if(parseDiv[0]){
-        console.log(parseDiv[0].textContent);
+
+      //Chrome
+      if(parseDiv[0]) {
         return parseDiv[0].textContent;
       }
+
+      //Firefox
       else {
         const regex = /(.*Location:\s*)(\S*\s*)(.*)/gm;
         const str = parseErrors[0].textContent;
         const subst = `$1$3`;
-        console.log(str.replace(regex, subst));
         return str.replace(regex, subst);
       }
     }

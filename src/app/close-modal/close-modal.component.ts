@@ -25,6 +25,7 @@ export class CloseModalComponent implements OnInit {
     this.xmlProcessor.xmlDom = null;
     this.xmlProcessor.activeElement = null;
     this.fileStateService.isOpened = false;
+    this.fileStateService.ifError = false;
     this.activeModal.close();
     this.router.navigate(['home']);
   }

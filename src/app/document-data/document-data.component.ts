@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { XmlProcessorService } from "../services/xml-processor.service";
 
 @Component({
-  selector: 'app-xml-view',
-  templateUrl: './xml-view.component.html',
-  styleUrls: ['./xml-view.component.css']
+  selector: 'app-document-data',
+  templateUrl: './document-data.component.html',
+  styleUrls: ['./document-data.component.css']
 })
-export class XmlViewComponent implements OnInit {
+export class DocumentDataComponent implements OnInit {
 
   constructor(public xmlProcessor: XmlProcessorService) { }
 

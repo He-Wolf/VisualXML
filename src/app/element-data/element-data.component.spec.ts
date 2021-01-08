@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { XmlViewComponent } from './xml-view.component';
+import { ElementDataComponent } from './element-data.component';
 
-describe('XmlViewComponent', () => {
-  let component: XmlViewComponent;
-  let fixture: ComponentFixture<XmlViewComponent>;
+describe('ElementDataComponent', () => {
+  let component: ElementDataComponent;
+  let fixture: ComponentFixture<ElementDataComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ XmlViewComponent ]
+      declarations: [ ElementDataComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(XmlViewComponent);
+    fixture = TestBed.createComponent(ElementDataComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

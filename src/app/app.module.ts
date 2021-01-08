@@ -7,7 +7,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { AngularSplitModule } from 'angular-split';
-import { CommonModule, APP_BASE_HREF, LocationStrategy, HashLocationStrategy} from '@angular/common';
+import { APP_BASE_HREF, LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -17,15 +17,15 @@ import { CloseModalComponent } from './close-modal/close-modal.component';
 import { HomeComponent } from './home/home.component';
 import { ViewerComponent } from './viewer/viewer.component';
 import { TreeViewComponent } from './tree-view/tree-view.component';
-import { DataViewComponent } from './data-view/data-view.component';
+import { MainViewComponent } from './main-view/main-view.component';
 import { ElementViewComponent } from './element-view/element-view.component';
 import { DocumentViewComponent } from './document-view/document-view.component';
-import { ChildElementViewComponent } from './child-element-view/child-element-view.component';
-import { DetailViewComponent } from './detail-view/detail-view.component';
-import { XmlViewComponent } from './xml-view/xml-view.component';
+import { ChildElementsComponent } from './child-elements/child-elements.component';
+import { ElementDataComponent } from './element-data/element-data.component';
+import { DocumentDataComponent } from './document-data/document-data.component';
 import { AncestorsComponent } from './ancestors/ancestors.component';
 import { XpathModalComponent } from './xpath-modal/xpath-modal.component';
-import { ErrorPageComponent } from './error-page/error-page.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -37,15 +37,15 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     HomeComponent,
     ViewerComponent,
     TreeViewComponent,
-    DataViewComponent,
+    MainViewComponent,
     ElementViewComponent,
     DocumentViewComponent,
-    ChildElementViewComponent,
-    DetailViewComponent,
-    XmlViewComponent,
+    ChildElementsComponent,
+    ElementDataComponent,
+    DocumentDataComponent,
     AncestorsComponent,
     XpathModalComponent,
-    ErrorPageComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DetailViewComponent } from './detail-view.component';
+import { DocumentDataComponent } from './document-data.component';
 
-describe('DetailViewComponent', () => {
-  let component: DetailViewComponent;
-  let fixture: ComponentFixture<DetailViewComponent>;
+describe('DocumentDataComponent', () => {
+  let component: DocumentDataComponent;
+  let fixture: ComponentFixture<DocumentDataComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DetailViewComponent ]
+      declarations: [ DocumentDataComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DetailViewComponent);
+    fixture = TestBed.createComponent(DocumentDataComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

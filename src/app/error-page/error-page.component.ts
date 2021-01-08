@@ -13,15 +13,6 @@ export class ErrorPageComponent implements OnInit {
   constructor(public xmlProcessor: XmlProcessorService, public fileStateService: FileStateService) { }
 
   ngOnInit(): void {
-    // if (this.xmlProcessor.xmlDom) {
-    //   const parseErrors = this.xmlProcessor.xmlDom.getElementsByTagName("parsererror");
-    //   if (parseErrors.length) {
-    //     const parseDiv = parseErrors[0].getElementsByTagName("div");
-    //     console.log(parseDiv)
-    //     const parseSourcetext = parseErrors[0].getElementsByTagName("sourcetext");
-    //     console.log(parseSourcetext)
-    //   }
-    // }
   }
 
   getErrorMessage() {

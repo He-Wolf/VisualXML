@@ -25,7 +25,7 @@ import { ElementDataComponent } from './element-data/element-data.component';
 import { DocumentDataComponent } from './document-data/document-data.component';
 import { AncestorsComponent } from './ancestors/ancestors.component';
 import { XpathModalComponent } from './xpath-modal/xpath-modal.component';
-import { ErrorPageComponent } from './error-page/error-page.component';
+import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     DocumentDataComponent,
     AncestorsComponent,
     XpathModalComponent,
-    ErrorPageComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,

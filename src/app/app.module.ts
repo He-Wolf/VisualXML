@@ -17,7 +17,7 @@ import { CloseModalComponent } from './close-modal/close-modal.component';
 import { HomeComponent } from './home/home.component';
 import { ViewerComponent } from './viewer/viewer.component';
 import { TreeViewComponent } from './tree-view/tree-view.component';
-import { PropertyViewComponent } from './property-view/property-view.component';
+import { MainViewComponent } from './main-view/main-view.component';
 import { ElementViewComponent } from './element-view/element-view.component';
 import { DocumentViewComponent } from './document-view/document-view.component';
 import { ChildElementViewComponent } from './child-element-view/child-element-view.component';
@@ -37,7 +37,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     HomeComponent,
     ViewerComponent,
     TreeViewComponent,
-    PropertyViewComponent,
+    MainViewComponent,
     ElementViewComponent,
     DocumentViewComponent,
     ChildElementViewComponent,

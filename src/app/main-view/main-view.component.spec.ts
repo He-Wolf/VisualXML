@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PropertyViewComponent } from './property-view.component';
+import { MainViewComponentnent } from './main-view.component';
 
-describe('PropertyViewComponent', () => {
-  let component: PropertyViewComponent;
-  let fixture: ComponentFixture<PropertyViewComponent>;
+describe('MainViewComponentnent', () => {
+  let component: MainViewComponentnent;
+  let fixture: ComponentFixture<MainViewComponentnent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PropertyViewComponent ]
+      declarations: [ MainViewComponentnent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PropertyViewComponent);
+    fixture = TestBed.createComponent(MainViewComponentnent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -7,7 +7,7 @@ import { MatTreeModule } from '@angular/material/tree';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { AngularSplitModule } from 'angular-split';
-import { CommonModule, APP_BASE_HREF, LocationStrategy, HashLocationStrategy} from '@angular/common';
+import { APP_BASE_HREF, LocationStrategy, HashLocationStrategy} from '@angular/common';
 
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -21,7 +21,7 @@ import { MainViewComponent } from './main-view/main-view.component';
 import { ElementViewComponent } from './element-view/element-view.component';
 import { DocumentViewComponent } from './document-view/document-view.component';
 import { ChildElementsComponent } from './child-elements/child-elements.component';
-import { DetailViewComponent } from './detail-view/detail-view.component';
+import { ElementDataComponent } from './element-data/element-data.component';
 import { XmlViewComponent } from './xml-view/xml-view.component';
 import { AncestorsComponent } from './ancestors/ancestors.component';
 import { XpathModalComponent } from './xpath-modal/xpath-modal.component';
@@ -41,7 +41,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     ElementViewComponent,
     DocumentViewComponent,
     ChildElementsComponent,
-    DetailViewComponent,
+    ElementDataComponent,
     XmlViewComponent,
     AncestorsComponent,
     XpathModalComponent,

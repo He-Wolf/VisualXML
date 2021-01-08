@@ -22,7 +22,7 @@ import { ElementViewComponent } from './element-view/element-view.component';
 import { DocumentViewComponent } from './document-view/document-view.component';
 import { ChildElementsComponent } from './child-elements/child-elements.component';
 import { ElementDataComponent } from './element-data/element-data.component';
-import { XmlViewComponent } from './xml-view/xml-view.component';
+import { DocumentDataComponent } from './document-data/document-data.component';
 import { AncestorsComponent } from './ancestors/ancestors.component';
 import { XpathModalComponent } from './xpath-modal/xpath-modal.component';
 import { ErrorPageComponent } from './error-page/error-page.component';
@@ -42,7 +42,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     DocumentViewComponent,
     ChildElementsComponent,
     ElementDataComponent,
-    XmlViewComponent,
+    DocumentDataComponent,
     AncestorsComponent,
     XpathModalComponent,
     ErrorPageComponent,

@@ -1,8 +1,0 @@
-<div *ngIf="xmlProcessor.activeElement.nodeType == 1; else elseBlock">
-    <app-element-view></app-element-view>
-</div>
-<ng-template #elseBlock>
-    <div>
-        <app-document-view></app-document-view>
-    </div>
-</ng-template>

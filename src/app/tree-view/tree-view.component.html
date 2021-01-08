@@ -1,6 +1,6 @@
 <div>
-  <button mat-stroked-button aria-label="Expand all" (click)="treeControl.expandAll();">Expand All</button>
-  <button mat-stroked-button aria-label="Collapse all" (click)="treeControl.collapseAll()">Collapse All</button>
+  <button mat-raised-button aria-label="Expand all" (click)="treeControl.expandAll();">Expand All</button>
+  <button class="mx-1" mat-raised-button aria-label="Collapse all" (click)="treeControl.collapseAll()">Collapse All</button>
 </div>
 <button class="mt-2" mat-flat-button [id]="xmlProcessor.xmlDom.uuid" (click)="activateElement(xmlProcessor.xmlDom)">Document</button>
 <mat-tree [dataSource]="dataSource" [treeControl]="treeControl">

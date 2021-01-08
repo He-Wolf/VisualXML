@@ -3,11 +3,11 @@ import { XmlProcessorService } from "../services/xml-processor.service";
 import { GuidShareService } from "../services/guid-share.service";
 
 @Component({
-  selector: 'app-child-element-subview',
-  templateUrl: './child-element-subview.component.html',
-  styleUrls: ['./child-element-subview.component.css']
+  selector: 'app-child-elements',
+  templateUrl: './child-elements.component.html',
+  styleUrls: ['./child-elements.component.css']
 })
-export class ChildElementSubviewComponent implements OnInit {
+export class ChildElementsComponent implements OnInit {
 
   constructor(public xmlProcessor: XmlProcessorService, public guidSender: GuidShareService) { }
 

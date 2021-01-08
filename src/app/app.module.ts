@@ -20,7 +20,7 @@ import { TreeViewComponent } from './tree-view/tree-view.component';
 import { MainViewComponent } from './main-view/main-view.component';
 import { ElementViewComponent } from './element-view/element-view.component';
 import { DocumentViewComponent } from './document-view/document-view.component';
-import { ChildElementSubviewComponent } from './child-element-subview/child-element-subview.component';
+import { ChildElementsComponent } from './child-elements/child-elements.component';
 import { DetailViewComponent } from './detail-view/detail-view.component';
 import { XmlViewComponent } from './xml-view/xml-view.component';
 import { AncestorsComponent } from './ancestors/ancestors.component';
@@ -40,7 +40,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
     MainViewComponent,
     ElementViewComponent,
     DocumentViewComponent,
-    ChildElementSubviewComponent,
+    ChildElementsComponent,
     DetailViewComponent,
     XmlViewComponent,
     AncestorsComponent,

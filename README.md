@@ -1,6 +1,3 @@
-
-this tool visualizes xml files in browser
-
 # VisualXML
 ## Table of Content
 1. [Introduction](#introduction)
@@ -56,14 +53,12 @@ If any question, please do not hesitate to contact me.
 - uuid: 8.3.2,
 ## 5. How to run the APP <a name="how-to-run-the-app"></a>
 ### 5.1. GitHub pages <a name="github-pages"></a>
-- download and install Docker and Docker-Compose
-- clone or download the content of the repository
-- open a terminal and navigate to the containing folder
-- write "docker-compose up --build" and press Enter
+- Visit: https://he-wolf.github.io/visualxml
+- you can find test xml files in testdata folder in the repository
 ### 5.2. PC <a name="pc"></a>
-- if no error message in the terminal, open your browser (recommended: latest Chrome, Firefox, Safari, Edge Chromium or Chromium) and open: http://localhost:4200
-- first register a user account, then log in and after that you can diplay your user data and also log out
-- after testing go back to the terminals and press "Ctrl+C" to stop the the backend and frontend as well
+- download the latest release from Github (VisualXML.zip asset): https://github.com/He-Wolf/VisualXML/releases
+- unzip the html and js files to your PC and open index.html
+- you can find test xml files in testdata folder in the repository
 ## 6. Limitations <a name="limitations"></a>
 ### 6.1. Exception/error handling <a name="exception-error-handling"></a>
 This application needs to be extended with exception handling. There are some already known issues which may cause error when it is not used correctly. I only tested the app with correct input values.

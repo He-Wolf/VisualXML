@@ -1,0 +1,16 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-primary-title">About</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body centered">
+    <p><b>name: </b>VisualXML</p>
+    <p><b>sources: </b><a href="https://github.com/He-Wolf/VisualXML">https://github.com/He-Wolf/VisualXML</a></p>
+    <p><b>version: </b>v0.1.1</p>
+    <p><b>licence: </b>MIT</p>
+    <p><b>author: </b><a href="https://github.com/He-Wolf">He-Wolf</a></p>
+</div>
+<div class="modal-footer">
+    <button type="button" ngbAutofocus class="btn btn-secondary" (click)="activeModal.close('Close click')">OK</button>
+</div>

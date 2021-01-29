@@ -53,7 +53,7 @@ If any question, please do not hesitate to contact me.
 - uuid: 8.3.2,
 ## 5. How to run the APP <a name="how-to-run-the-app"></a>
 ### 5.1. GitHub pages <a name="github-pages"></a>
-- Visit: https://he-wolf.github.io/visualxml
+- visit: https://he-wolf.github.io/VisualXML
 - you can find test xml files in testdata folder in the repository
 ### 5.2. PC <a name="pc"></a>
 - download the latest release from Github (VisualXML.zip asset): https://github.com/He-Wolf/VisualXML/releases

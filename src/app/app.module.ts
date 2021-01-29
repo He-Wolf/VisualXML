@@ -71,3 +71,5 @@ import { AboutModalComponent } from './about-modal/about-modal.component';
 ],
 })
 export class AppModule { }
+
+//ng build --prod

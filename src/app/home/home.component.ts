@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
+import { OpenModalComponent } from "../open-modal/open-modal.component";
+import { FileStateService } from "../services/file-state.service";
 
 @Component({
   selector: 'app-home',
@@ -8,9 +11,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public activeModal: NgbModal,
+    public fileStateService: FileStateService,
+    ) { }
 
   ngOnInit(): void {
+  }
+  
+  openModal() {
+    this.activeModal.open(OpenModalComponent);
   }
 
 }

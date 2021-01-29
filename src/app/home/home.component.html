@@ -1,1 +1,21 @@
-<p class="p-4">This is the homepage</p>
+<div class="p-4 m-auto">
+    <h1 class="text-center my-4">Visualize your xml file in browser!</h1>
+    <p class="lead my-4 text-center">This web tool visualizes your xml file. You do not need to install any software. The code is executed safely in your browser.</p>
+
+    <p class="lead">● Browse the xml file from your PC and open it</p>
+    <p class="lead">● Select the xml element in the tree viewer to see the attributes, text content, parent and children elements</p>
+    <p class="lead">● Generate and copy the xpath of the element</p>
+    <p class="lead">● Get information whether your xml file is well-formed (Works in Chrome and Firefox as well)</p>
+    <p class="lead">● Save the xml file to another location if you wish</p>
+
+    <div *ngIf="!fileStateService.isOpened; else elseBlock" class="d-table m-auto">
+        <p class="lead d-inline text-center">Are you interested?</p>
+        <button type="button" class="btn btn-primary mx-2" (click)="openModal();">Open</button>
+    </div>
+    <ng-template #elseBlock>
+        <div class="d-table m-auto">
+            <p class="lead d-inline text-center">Go back to Viewer</p>
+            <a class="btn btn-primary mx-2" [routerLink]="['/viewer']" routerLinkActive="active">Viewer</a>
+        </div>
+    </ng-template>
+</div>

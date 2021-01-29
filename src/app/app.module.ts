@@ -26,6 +26,7 @@ import { DocumentDataComponent } from './document-data/document-data.component';
 import { AncestorsComponent } from './ancestors/ancestors.component';
 import { XpathModalComponent } from './xpath-modal/xpath-modal.component';
 import { ErrorComponent } from './error/error.component';
+import { AboutModalComponent } from './about-modal/about-modal.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { ErrorComponent } from './error/error.component';
     AncestorsComponent,
     XpathModalComponent,
     ErrorComponent,
+    AboutModalComponent,
   ],
   imports: [
     BrowserModule,
